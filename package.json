@@ -1,5 +1,12 @@
 {
-  "name": "root",
+  "name": "roll20-sheets",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "scaffold": "node commands/create-project.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/adrianthewriter/roll20-sheets.git",
