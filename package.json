@@ -1,0 +1,11 @@
+{
+  "name": "root",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrianthewriter/roll20-sheets.git",
+    "directory": ""
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
