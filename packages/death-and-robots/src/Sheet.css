@@ -4,6 +4,6 @@
   background: transparent;
 
   & span {
-    background: green;
+    background: blue;
   }
 }
