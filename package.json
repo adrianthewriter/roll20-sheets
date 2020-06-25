@@ -1,9 +1,14 @@
 {
   "name": "roll20-sheets",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@adrianthewriter/swordsmith"
+    ]
+  },
   "scripts": {
     "scaffold": "node commands/create-project.js"
   },

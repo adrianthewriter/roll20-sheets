@@ -24,5 +24,5 @@ run(`yarn`, [
   `create`,
   `react-app`,
   `packages/${args[0]}`,
-  `--template file:../cra-template-swordsmith`,
+  `--template @adrianthewriter/cra-template-swordsmith`,
 ])
