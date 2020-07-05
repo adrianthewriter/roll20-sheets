@@ -1,0 +1,10 @@
+.maneuvers {
+  grid-column: 3;
+  grid-row: 1 / span 5;
+}
+
+.maneuver {
+  & h3::after {
+    content: ':';
+  }
+}

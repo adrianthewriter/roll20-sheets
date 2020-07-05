@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-bottom: calc(var(--gap-size) * 3);
+
+  & .logo {
+    width: 150px;
+
+    & img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    & span {
+      display: block;
+      font: italic 12px / 1.2 var(--font-body);
+      text-align: center;
+    }
+  }
+
+  & .mode {
+    display: block;
+    flex: none;
+    margin: 0;
+    padding: 0;
+    width: 125px;
+    border: 2px solid #222;
+    border-radius: 3px;
+  }
+
+  & .mode span {
+    display: block;
+    padding: 5px 10px;
+    width: stretch;
+    height: stretch;
+    font: 24px var(--font-body);
+    text-align: center;
+    text-transform: capitalize;
+  }
+}

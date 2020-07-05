@@ -1,0 +1,34 @@
+.table--note {
+  & .tablerow input:nth-child(3) {
+    border-right: none;
+  }
+
+  & .drawer {
+    flex-flow: row wrap;
+    border-bottom: var(--border-primary);
+  }
+
+  & .drawer textarea {
+    flex: none;
+    width: stretch;
+    border-bottom: var(--border-secondary);
+  }
+
+  & .drawer .toggle {
+    flex: 1;
+    width: 0;
+    padding: 0 6px;
+
+    & > span {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  /* "Mark as header" styles */
+  & input[type='hidden'][name*='header-toggle'][value='checked'] {
+    & ~ * {
+      background: #eee;
+    }
+  }
+}

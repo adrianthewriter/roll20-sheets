@@ -1,0 +1,67 @@
+label.field {
+  flex-flow: row wrap;
+
+  &:not(:last-child) {
+    border-bottom: var(--border-primary);
+  }
+
+  & > span {
+    flex: none;
+    width: stretch;
+    font-weight: normal;
+    font-style: italic;
+
+    &::after {
+      content: none;
+    }
+  }
+}
+
+select.field {
+  flex: none;
+  width: fit-content;
+  padding: 0 6px;
+  align-items: center;
+  appearance: listbox;
+}
+
+label.field.rowid {
+  flex: none;
+  width: fit-content;
+  color: #aaa;
+  font: 9px var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &::before {
+    content: 'k';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Pictos Three';
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  & span:first-child {
+    display: none;
+  }
+
+  & span:last-child {
+    display: flex;
+    align-items: center;
+
+    flex: 1;
+    width: fit-content;
+
+    font-size: 9px;
+    font-style: italic;
+    user-select: all;
+  }
+}
+
+::placeholder {
+  color: #ccc;
+}

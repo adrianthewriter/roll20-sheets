@@ -1,0 +1,71 @@
+.table--advantage {
+  & .tableheader span:nth-child(3),
+  & .tablerow select:nth-child(4) {
+    flex: none;
+    width: 100px;
+    border-right: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  & .drawer {
+    flex-flow: row wrap;
+    border-bottom: var(--border-primary);
+  }
+
+  & .drawer textarea {
+    flex: none;
+    width: stretch;
+    border-bottom: var(--border-secondary);
+  }
+
+  & .drawer .toggle {
+    flex: 1;
+    width: 0;
+    padding: 0 6px;
+
+    & > span {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  & .drawer label.field {
+    flex-flow: row nowrap;
+    flex: none;
+    width: 65px;
+
+    & > span {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 12px;
+      font-style: italic;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    & > input {
+      flex: 1;
+      width: 0;
+      text-align: center;
+    }
+  }
+
+  /* "Mark as header" styles */
+  & input[type='hidden'][name*='header-toggle'][value='checked'] {
+    & ~ * {
+      background: #eee;
+    }
+
+    & ~ input[type='text']:nth-child(3) {
+      border-right: 0;
+    }
+
+    & ~ select:nth-child(4) {
+      display: none;
+    }
+  }
+}

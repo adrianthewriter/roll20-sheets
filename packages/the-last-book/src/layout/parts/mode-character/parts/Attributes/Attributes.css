@@ -1,0 +1,39 @@
+/* Attribute styles */
+.attribute {
+  margin-bottom: 6px;
+
+  &:first-child {
+    margin-top: 6px;
+  }
+}
+
+/* Derived Attributes styles */
+.box.derived {
+  margin-bottom: var(--base-size);
+  padding-bottom: var(--base-size);
+  border-bottom: var(--border-strong);
+
+  &::before {
+    content: none; /* Removes top border from the box */
+  }
+}
+
+.statblock {
+  display: flex;
+  flex-flow: row nowrap;
+
+  & > span,
+  & > button[type='roll'] {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    font-weight: bold;
+  }
+
+  & > input[type='text'] {
+    flex: none;
+    width: 60px;
+    text-align: center;
+    border: var(--border-strong);
+  }
+}

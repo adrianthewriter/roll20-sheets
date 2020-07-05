@@ -1,0 +1,66 @@
+.table--sessionlog {
+  & .tableheader span:nth-child(3),
+  & .tablerow input[type='text']:nth-child(4) {
+    flex: none;
+    width: 40px;
+    border-right: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+  & .drawer {
+    border-bottom: var(--border-primary);
+  }
+
+  & .drawer .toggle {
+    width: stretch;
+    padding: 0 6px;
+
+    border-top: var(--border-secondary);
+
+    & > span {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  /* "Mark as header" styles */
+  & input[type='hidden'][name*='header-toggle'][value='checked'] {
+    & ~ * {
+      background: #eee;
+    }
+
+    & ~ input[type='text']:nth-child(3) {
+      border-right: 0;
+    }
+
+    & ~ input[type='text']:nth-child(4) {
+      display: none;
+    }
+  }
+}
+
+.table--caplog {
+  & .tableheader span,
+  & .tablerow span {
+    display: flex;
+    flex: 1;
+    width: 0;
+    height: var(--base-size);
+    justify-content: center;
+    text-align: center;
+  }
+
+  & .tablerow span {
+    border-right: var(--border-primary);
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}
+
+/* Handle Roll20 generated elements
+.table--sessionlog .repcontrol {
+  border-bottom: var(--border-strong);
+} */

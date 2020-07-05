@@ -1,0 +1,130 @@
+.techniques {
+  grid-column: 1 / span 2;
+  margin-right: calc(var(--gap-size) * 2);
+}
+
+.table--techniques {
+  /* Fields except name */
+  & .tableheader span:nth-child(n + 3),
+  & .tablerow input:nth-child(n + 4) {
+    flex: none;
+    width: 35px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  & .tableheader span:nth-child(3),
+  & .tablerow input:nth-child(4) {
+    flex: none;
+    width: 50px;
+  }
+
+  & .tablerow input:nth-child(6) {
+    border-right: none;
+  }
+
+  /* Drawer */
+  & .drawer {
+    flex-flow: row wrap;
+    justify-content: flex-end;
+  }
+
+  & .drawer .buttonrow {
+    display: flex;
+    flex-flow: row nowrap;
+    width: stretch;
+    padding: 3px;
+
+    & button {
+      flex: 1;
+      margin: 0 3px;
+      padding: 0 6px;
+      justify-content: center;
+      border: var(--border-primary);
+      border-radius: 3px;
+    }
+  }
+
+  & .drawer textarea {
+    flex: none;
+    width: stretch;
+    border-top: var(--border-secondary);
+    border-bottom: var(--border-secondary);
+  }
+
+  & .drawer .controlrow {
+    display: flex;
+    width: stretch;
+    padding: 0 3px;
+
+    & label {
+      flex: none;
+      width: 35px;
+      padding: 0;
+      flex-flow: column nowrap;
+      border: none;
+
+      &:nth-child(1) {
+        width: 65px;
+      }
+
+      &:nth-child(3) {
+        margin-left: auto;
+      }
+    }
+
+    & span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: stretch;
+      font-size: 12px;
+      font-style: italic;
+    }
+
+    & input[type='text'] {
+      flex: none;
+      width: stretch;
+      padding: 0;
+      text-align: center;
+    }
+  }
+
+  & .drawer .toggle {
+    flex: 1;
+    width: fit-content;
+    padding: 0 6px;
+
+    & > span {
+      font-size: 12px;
+      font-style: italic;
+    }
+  }
+
+  & .drawer label.rowid {
+    flex-flow: row nowrap;
+    flex: none;
+    width: 65px;
+  }
+
+  /* "Mark as header" styles */
+  & input[type='hidden'][name*='header-toggle'][value='checked'] {
+    & ~ * {
+      background: #eee;
+    }
+
+    & ~ input[type='text']:nth-child(3) {
+      border-right: 0;
+    }
+
+    & ~ input[type='text']:nth-child(n + 4),
+    & ~ .drawer .controlrow,
+    & ~ .drawer .buttonrow {
+      display: none;
+    }
+
+    & ~ .drawer textarea {
+      border-top: 0;
+    }
+  }
+}

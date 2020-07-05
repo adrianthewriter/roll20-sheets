@@ -1,0 +1,60 @@
+.box {
+  position: relative;
+  margin-bottom: calc(var(--gap-size) * 3);
+
+  &::before,
+  &.isboxed::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    display: block;
+    width: stretch;
+    height: 6px;
+
+    border-top: var(--border-strong);
+    border-bottom: var(--border-strong);
+    background-color: white;
+  }
+
+  &.isboxed::before {
+    top: -2px;
+    margin: 0 -2px;
+  }
+
+  &.isboxed::after {
+    top: unset;
+    bottom: -2px;
+    margin: 0 -2px;
+  }
+
+  &::before,
+  &::after {
+    border: var(--border-strong);
+  }
+
+  & h2 {
+    padding-top: 2px;
+    min-height: 30px;
+    background: transparent
+      url('https://raw.githubusercontent.com/thelastbook/roll20-sheet/master/strip.png')
+      bottom no-repeat;
+    background-size: auto 30px;
+  }
+
+  &.isboxed {
+    background-color: #ccc;
+  }
+
+  &.isboxed .boxcontent {
+    padding: 0;
+    padding-bottom: 3px;
+
+    & > * > * {
+      padding: 0 6px;
+    }
+  }
+
+  & .boxcontent {
+    padding: 0;
+  }
+}
