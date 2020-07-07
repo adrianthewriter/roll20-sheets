@@ -30,9 +30,6 @@ label.field.rowid {
   width: fit-content;
   color: #aaa;
   font: 9px var(--font-mono);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 
   &::before {
     content: 'k';
@@ -50,15 +47,20 @@ label.field.rowid {
   }
 
   & span:last-child {
-    display: flex;
-    align-items: center;
+    display: inline-block;
+    line-height: var(--base-size);
 
     flex: 1;
     width: fit-content;
+    min-width: 0;
 
     font-size: 9px;
     font-style: italic;
     user-select: all;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 

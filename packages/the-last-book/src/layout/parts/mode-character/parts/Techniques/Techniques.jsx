@@ -9,7 +9,7 @@ export default (props) => (
     <Table
       repeat
       id="techniques"
-      header={['<view>', 'Name', 'Par.', 'Vigor', 'Lapse']}
+      header={['<view>', 'Name', 'Par.', 'Cost', 'Lapse']}
     >
       <Toggle hidden id="technique-header" />
       <Toggle type="collapse" id="technique" />
@@ -23,6 +23,7 @@ export default (props) => (
           <Field id="technique-mastery" label="Mast." placeholder="-" />
           <Field id="technique-cap" label="CAP" placeholder="-" />
         </div>
+        <Toggle hidden id="technique-usemacros" value="" />
         <div className={styles.buttonrow}>
           <Button id="technique-attackroll" roll={`@{technique-attackmacro}`}>
             Use Tech.
@@ -33,8 +34,8 @@ export default (props) => (
           <Field hidden id="technique-attackmacro" />
           <Field hidden id="technique-damagemacro" />
         </div>
-
         <Field type="textbox" id="technique-desc" />
+        <Toggle id="technique-usemacros" label="Use macros" value="usemacros" />
         <Toggle id="technique-header" label="Mark as header" value="checked" />
         <Field
           displayOnly

@@ -91,7 +91,7 @@
   }
 
   & .drawer .toggle {
-    flex: 1;
+    flex: none;
     width: fit-content;
     padding: 0 6px;
 
@@ -105,6 +105,13 @@
     flex-flow: row nowrap;
     flex: none;
     width: 65px;
+    margin-left: auto;
+  }
+
+  & input[type='hidden'][name*='technique-usemacros'] {
+    &:not([value='usemacros']) ~ .buttonrow {
+      display: none;
+    }
   }
 
   /* "Mark as header" styles */

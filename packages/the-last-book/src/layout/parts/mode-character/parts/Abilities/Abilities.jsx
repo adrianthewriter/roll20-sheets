@@ -10,7 +10,7 @@ export default (props) => (
     <Table
       repeat
       id="prayers"
-      header={['<view>', 'Name', 'Par.', 'Favor', 'Act.']}
+      header={['<view>', 'Name', 'Par.', 'Cost', 'Act.']}
     >
       <Toggle hidden id="prayer-header" />
       <Toggle type="collapse" id="prayer" />
@@ -24,6 +24,7 @@ export default (props) => (
           <Field id="prayer-mastery" label="Mast." placeholder="-" />
           <Field id="prayer-cap" label="CAP" placeholder="-" />
         </div>
+        <Toggle hidden id="prayer-usemacros" value="" />
         <div className={styles.buttonrow}>
           <Button id="prayer-attackroll" roll={`@{prayer-attackmacro}`}>
             Use Ability
@@ -36,6 +37,7 @@ export default (props) => (
         </div>
 
         <Field type="textbox" id="prayer-desc" />
+        <Toggle id="prayer-usemacros" label="Use macros" value="usemacros" />
         <Toggle id="prayer-header" label="Mark as header" value="checked" />
         <Field
           displayOnly

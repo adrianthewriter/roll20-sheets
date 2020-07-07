@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Box, Table, Toggle, Field, Button, Drawer } from 'swordsmith'
+import { Box, Table, Toggle, Field, Drawer } from 'swordsmith'
 
 import styles from './Inventory.css'
 

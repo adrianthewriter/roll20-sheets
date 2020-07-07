@@ -68,11 +68,11 @@ export default (props) => (
           <Field id="weapon-block" label="Block" value="+0" />
           <Field id="weapon-dr" label="DR" value="0" />
         </div>
+        <Toggle hidden id="weapon-equipped" value="" />
         <div className={styles.buttonrow}>
-          <Field hidden id="weapon-equipped" value="" />
-          <Button id="weapon-equip" action>
+          {/* <Button id="weapon-equip" action>
             Weapon
-          </Button>
+          </Button> */}
           <Button id="weapon-attackroll" roll={`@{weapon-attackmacro}`}>
             Attack
           </Button>
@@ -87,7 +87,8 @@ export default (props) => (
           <Field hidden id="weapon-damagemacro" />
         </div>
         <Field type="textbox" id="weapon-desc" />
-        <Toggle id="weapon-offhand" label="Mark as offhand" value="checked" />
+        <Toggle id="weapon-equipped" label="Equip" value="equipped" />
+        <Toggle id="weapon-offhand" label="Mark as offhand" value="-2" />
         <Field
           displayOnly
           id="weapon-id"

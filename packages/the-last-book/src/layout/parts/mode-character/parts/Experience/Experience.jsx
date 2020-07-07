@@ -1,5 +1,4 @@
 import React from 'react'
-import c from 'classnames'
 
 import { Box, Table, Toggle, Field, Drawer } from 'swordsmith'
 
@@ -18,10 +17,14 @@ export default (props) => (
       </Drawer>
     </Table>
 
-    <Table id="caplog" header={['Unspent', 'Total']}>
+    <h3>⸺ Total CAP ⸺</h3>
+    <Table id="caplog" header={['Unspent', 'Spent']}>
       <Field hidden id="cap-attributes" />
       <Field hidden id="cap-advantages" />
       <Field hidden id="cap-skillsets" />
+      <Field hidden id="cap-maneuvers" />
+      <Field hidden id="cap-techniques" />
+      <Field hidden id="cap-abilities" />
 
       <Field hidden id="cap-gained" />
       <Field displayOnly id="cap-unspent" />

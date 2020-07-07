@@ -1,7 +1,7 @@
 import React from 'react'
-import c from 'classnames'
 
 import { Box, FieldGroup, Field } from 'swordsmith'
+import { buildRollTemplate } from '@scripts/util/BuildRollTemplateTag'
 
 import styles from './Maneuvers.css'
 
@@ -17,7 +17,19 @@ const Move = ({ id, label, type, parent, disabled, ...props }) => (
     <Field
       id={id}
       label="Rat."
-      roll={`&{template:TLBattackRoll} {{name=@{character-name}}} {{move=${label}}} {{${type.toLowerCase()}=[[2d6+(@{${id}})+(?{${type} modifier|+0})]]}} {{note=?{Note}}}`}
+      roll={buildRollTemplate('TLBattackRoll', {
+        name: '@{character-name}',
+        move: label,
+        rolltype: 'Attribute',
+        [`${type.toLowerCase()}`]: `[[2d6+(@{${id}})+(?{${type} modifier|+0})]]`,
+        note: `?{Note}`,
+      })}
+      /**
+       *  roll={`&{template:TLBattackRoll}
+       *  {{name=@{character-name}}} {{move=${label}}}
+       * {{${type.toLowerCase()}=[[2d6+(@{${id}})+(?{${type} modifier|+0})]]}}
+       *  {{note=?{Note}}}`}
+       */
     />
   </FieldGroup>
 )

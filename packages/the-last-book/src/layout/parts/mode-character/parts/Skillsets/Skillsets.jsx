@@ -1,7 +1,7 @@
 import React from 'react'
-import c from 'classnames'
 
 import { Box, Table, Toggle, Field, Button, Drawer } from 'swordsmith'
+import { buildRollTemplate } from '@scripts/util/BuildRollTemplateTag'
 
 import styles from './Skillsets.css'
 
@@ -21,7 +21,19 @@ export default (props) => (
       <Field id="skill-chance" />
       <Button
         id="skill-roll"
-        roll={`&{template:TLBskillRoll} {{name=@{character-name}}} {{skill=@{skill-name}}} {{roll=[[d100cs<3cf>99]]}} {{chance=@{skill-chance}}} {{note=?{Note}}}`}
+        roll={buildRollTemplate('TLBabilityRoll', {
+          name: `@{character-name}`,
+          title: `@{skill-name}`,
+          rolltype: 'Skill',
+          roll: `[[d100cs<3cf>99]]`,
+          chance: `@{skill-chance}`,
+          note: `?{Note}`,
+        })}
+        /**
+         * roll={`&{template:TLBskillRoll} {{name=@{character-name}}}
+         * {{skill=@{skill-name}}} {{roll=[[d100cs<3cf>99]]}}
+         * {{chance=@{skill-chance}}} {{note=?{Note}}}`}
+         */
       />
       <Drawer id="skill">
         <Field type="textbox" id="skill-desc" />

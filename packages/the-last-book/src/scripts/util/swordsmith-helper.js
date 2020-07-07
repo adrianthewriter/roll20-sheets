@@ -103,6 +103,24 @@ export default class SwordsmithSheetWorkers {
 
         return { attrSet, fieldSet }
       },
+
+      getSectionIds: (sectionName, func) => {
+        getAttrs([`_reporder_${sectionName}`], function (v) {
+          getSectionIDs(sectionName, function (idArray) {
+            let reporderArray = v[`_reporder_${sectionName}`]
+                ? v[`_reporder_${sectionName}`].toLowerCase().split(',')
+                : [],
+              ids = [
+                ...new Set(
+                  reporderArray
+                    .filter((x) => idArray.includes(x))
+                    .concat(idArray)
+                ),
+              ]
+            func(ids)
+          })
+        })
+      },
     }
   }
 
@@ -198,7 +216,7 @@ export default class SwordsmithSheetWorkers {
     return this
   }
 
-  getFields(fields, section, parseOnly = false) {
+  getFields(fields, section, options = {}) {
     if (!fields) {
       throw new Error(
         "'getFields()' must be called with an 'fields' argument in the form of a String or an Array<String>."
@@ -219,11 +237,12 @@ export default class SwordsmithSheetWorkers {
       return {
         field: field,
         section: section,
+        getAllRows: options.getAllRows ? true : _.noop(),
       }
     })
 
     // If the 'parseOnly' flag is set, return the 'fields' object
-    if (parseOnly) return fields
+    if (options.parseOnly) return fields
 
     // Otherwise, add each 'field' to 'ctx'
     fields.forEach((field) => {
@@ -232,6 +251,12 @@ export default class SwordsmithSheetWorkers {
 
     // Return 'this' for chaining
     return this
+  }
+
+  getFieldsFromAllRows(fields, section) {
+    return this.getFields(fields, section, {
+      getAllRows: true,
+    })
   }
 
   then(func) {
@@ -243,33 +268,91 @@ export default class SwordsmithSheetWorkers {
     let triggers, attrNames, fieldNames
     triggers = this.ctx.getTriggers()
     attrNames = this.ctx.attrs
-    fieldNames = this.ctx.fields.map(({ section, field }) => {
-      return `repeating_${section}_${field}`
-    })
+    fieldNames = this.ctx.fields
+    // fieldNames = this.ctx.fields.map(({ section, field }) => {
+    //   return `repeating_${section}_${field}`
+    // })
 
-    console.log('---->', triggers)
+    const fieldsFromThisRow = fieldNames
+    const fieldsFromAllRows = fieldNames.filter((field) => field.getAllRows)
 
     // Execute the operation
     on(triggers.join(' '), (e) => {
-      getAttrs(_.union(attrNames, fieldNames), (values) => {
-        const { attrSet, fieldSet } = this.util.parseValues(values)
-
-        try {
-          _.partial(func, {
-            e,
-            gameId: this.gameId,
-            version: this.version,
-            attrSet,
-            fieldSet,
-            setAttrs: _.partial(this.toolbox.setAttrs),
-          })()
-        } catch (err) {
-          throw new Error(
-            `SheetWorker failed in 'on(${triggers.join(' ')})'`,
-            err
-          )
-        }
+      const sectionSet = new Set()
+      fieldsFromAllRows.forEach((field) => {
+        sectionSet.add(field.section)
       })
+      const sectionArray = [...sectionSet]
+
+      console.log('SECTION ARRAY ----->', sectionArray)
+
+      if (sectionArray.length) {
+        // If fields were requested from all rows
+        sectionArray.forEach((section) => {
+          this.util.getSectionIds(section, (rowIds) => {
+            fieldNames = [
+              // ...fieldsFromThisRow.map(({ section, field }) => {
+              //   return `repeating_${section}_${field}`
+              // }),
+              ...rowIds
+                .map((id) => {
+                  return fieldsFromAllRows.map(({ section, field }) => {
+                    return `repeating_${section}_${id}_${field}`
+                  })
+                })
+                .flat(),
+              ...fieldsFromThisRow.map(({ section, field }) => {
+                return `repeating_${section}_${field}`
+              }),
+            ]
+
+            getAttrs(_.union(attrNames, fieldNames), (values) => {
+              const { attrSet, fieldSet } = this.util.parseValues(values)
+
+              try {
+                _.partial(func, {
+                  e,
+                  gameId: this.gameId,
+                  version: this.version,
+                  section,
+                  attrSet,
+                  fieldSet,
+                  setAttrs: _.partial(this.toolbox.setAttrs),
+                })()
+              } catch (err) {
+                throw new Error(
+                  `SheetWorker failed in 'on(${triggers.join(' ')})'`,
+                  err
+                )
+              }
+            })
+          })
+        })
+      } else {
+        // If fields were requested from only this row
+        fieldNames = fieldsFromThisRow.map(({ section, field }) => {
+          return `repeating_${section}_${field}`
+        })
+        getAttrs(_.union(attrNames, fieldNames), (values) => {
+          const { attrSet, fieldSet } = this.util.parseValues(values)
+
+          try {
+            _.partial(func, {
+              e,
+              gameId: this.gameId,
+              version: this.version,
+              attrSet,
+              fieldSet,
+              setAttrs: _.partial(this.toolbox.setAttrs),
+            })()
+          } catch (err) {
+            throw new Error(
+              `SheetWorker failed in 'on(${triggers.join(' ')})'`,
+              err
+            )
+          }
+        })
+      }
     })
 
     // End the chain

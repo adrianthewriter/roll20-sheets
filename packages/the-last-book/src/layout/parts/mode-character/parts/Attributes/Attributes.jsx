@@ -2,6 +2,7 @@ import React from 'react'
 import c from 'classnames'
 
 import { Box, FieldGroup, Field, Button } from 'swordsmith'
+import { buildRollTemplate } from '@scripts/util/BuildRollTemplateTag'
 
 import styles from './Attributes.css'
 
@@ -15,7 +16,15 @@ const Attribute = ({ id, label, ...props }) => (
       <Field
         id={`${id}_max`}
         label="Chance"
-        roll={`&{template:TLBskillRoll} {{name=@{character-name}}} {{skill=${label}}} {{roll=[[d100cs<3cf>99]]}} {{chance=@{${id}|max}}} {{note=?{Note}}}`}
+        roll={buildRollTemplate('TLBabilityRoll', {
+          name: '@{character-name}',
+          title: label,
+          rolltype: 'Attribute',
+          roll: `[[d100cs<3cf>99]]`,
+          chance: `@{${id}|max}`,
+          note: `?{Note}`,
+        })}
+        // roll={`&{template:TLBskillRoll} {{name=@{character-name}}} {{skill=${label}}} {{roll=[[d100cs<3cf>99]]}} {{chance=@{${id}|max}}} {{note=?{Note}}}`}
       />
     </FieldGroup>
   </div>
@@ -24,7 +33,17 @@ const Attribute = ({ id, label, ...props }) => (
 const Stat = ({ id, label, roll, ...props }) => (
   <div className={styles.statblock}>
     {roll ? (
-      <Button id={id} roll={roll}>
+      <Button
+        id={id}
+        roll={buildRollTemplate('TLBabilityRoll', {
+          name: '@{character-name}',
+          title: label,
+          rolltype: 'Resistance',
+          roll: `[[d100cs<3cf>99]]`,
+          chance: `@{${id}}`,
+          note: `?{Note}`,
+        })}
+      >
         {label}
       </Button>
     ) : (
@@ -47,9 +66,9 @@ export default (props) => (
 
     <Box id="derived" className={styles.derived}>
       <h3>Derived Stats:</h3>
-      <Stat id="stun" label="Stun" roll="/r d100" />
-      <Stat id="con" label="Con." roll="/r d100" />
-      <Stat id="react" label="Reaction" roll="/r d100" />
+      <Stat id="stun" label="Stun" roll />
+      <Stat id="con" label="Con." roll />
+      <Stat id="react" label="Reaction" roll />
       <Stat id="sp" label="Speed (SP)" />
     </Box>
   </>
