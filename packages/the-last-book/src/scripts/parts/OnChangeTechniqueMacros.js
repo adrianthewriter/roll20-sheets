@@ -49,6 +49,7 @@ export default (sheet) => {
         buildRollTemplate('TLBattackRoll', {
           name: `@{character-name}`,
           move: techName,
+          action: techParent === 'parry' ? 'parries' : `${techParent}s`,
           [techType.toLowerCase()]: `[[2d6+(@{${techParent}})+(?{${techType} modifier|+0})]]`,
           note: `No macro found. Create an ability named "Move--${techName.replace(
             /\s/g,

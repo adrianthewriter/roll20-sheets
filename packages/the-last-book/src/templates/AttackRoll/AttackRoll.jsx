@@ -10,8 +10,15 @@ export default () => (
         <em>
           <Tag name="name" placeholder="Character Name" />
         </em>
-        <Tag logic="attack">attacks</Tag>
-        <Tag logic="defense">defends</Tag>
+        <span>
+          <Tag logic="action">
+            <Tag name="action" />
+          </Tag>
+          <Tag not logic="action">
+            <Tag logic="attack">attacks</Tag>
+            <Tag logic="defense">defends</Tag>
+          </Tag>
+        </span>
         <Tag logic="weapon">
           <span>with their</span>
           <em>
@@ -25,11 +32,13 @@ export default () => (
               <Tag name={`weapon${n}`} placeholder="Sword" />
             </em>
           </Tag>
-        ))}{' '}
-        using
-        <span class={styles.rolltitle}>
-          <Tag name="move" placeholder="Power Move" />
-        </span>
+        ))}
+        <Tag logic="move">
+          using
+          <span class={styles.rolltitle}>
+            <Tag name="move" placeholder="Power Move" />
+          </span>
+        </Tag>
       </p>
     </div>
     <div class={styles.rollcontent}>

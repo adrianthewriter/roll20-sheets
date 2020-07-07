@@ -10,10 +10,19 @@ export default () => (
         <em>
           <Tag name="name" placeholder="Character Name" />
         </em>
-        <span>uses</span>
-        <span class={styles.rolltitle}>
-          <Tag name="title" placeholder="Ability Name" />
-        </span>
+        <Tag logic="title">
+          <span>
+            <Tag logic="action">
+              <Tag name="action" />
+            </Tag>
+            <Tag not logic="action">
+              uses
+            </Tag>
+          </span>
+          <span class={styles.rolltitle}>
+            <Tag name="title" placeholder="Ability Name" />
+          </span>
+        </Tag>
       </p>
     </div>
     <div class={styles.rollcontent}>

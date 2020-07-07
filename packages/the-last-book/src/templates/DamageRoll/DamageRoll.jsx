@@ -10,8 +10,14 @@ export default () => (
         <em>
           <Tag name="name" placeholder="Character Name" />
         </em>
-        <span>hits</span>
-
+        <span>
+          <Tag logic="action">
+            <Tag name="action" />
+          </Tag>
+          <Tag not logic="action">
+            hits
+          </Tag>
+        </span>
         <Tag logic="weapon">
           <span>with their</span>
           <em>

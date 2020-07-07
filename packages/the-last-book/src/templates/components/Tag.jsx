@@ -2,11 +2,11 @@ import React from 'react'
 
 const isProd = process.env.NODE_ENV === 'production'
 
-export default ({ name, placeholder, logic, ...props }) => {
+export default ({ name, placeholder, logic, not, ...props }) => {
   if (logic && isProd) {
     return (
       <>
-        {`{{#${logic}}}`}
+        {`{{${not ? '^' : '#'}${logic}}}`}
         {props.children}
         {`{{/${logic}}}`}
       </>

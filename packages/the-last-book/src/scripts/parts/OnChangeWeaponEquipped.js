@@ -36,17 +36,20 @@ export default (sheet) => {
           }) +
           buildRollQuery('Maneuver', {
             Swing: buildRollTemplate({
-              move: 'Swing',
+              // move: 'Swing',
+              action: 'swings',
               attack:
                 '[[2d6+(@{swing})+(@{weapon-swing})+(@{weapon-offhand-toggle})+(?{Attack modifier&#124;+0&#125;)]]',
             }),
             Thrust: buildRollTemplate({
-              move: 'Thrust',
+              // move: 'Thrust',
+              action: 'thrusts',
               attack:
                 '[[2d6+(@{thrust})+(@{weapon-thrust})+(@{weapon-offhand-toggle})+(?{Attack modifier&#124;+0&#125;)]]',
             }),
             Throw: buildRollTemplate({
-              move: 'Throw',
+              // move: 'Throw',
+              action: 'throws',
               attack:
                 '[[2d6+(@{throw})+(@{weapon-throw})+(@{weapon-offhand-toggle})+(?{Attack modifier&#124;+0&#125;)]]',
             }),
@@ -60,12 +63,14 @@ export default (sheet) => {
           }) +
           buildRollQuery('Maneuver', {
             Parry: buildRollTemplate({
-              move: 'Parry',
+              // move: 'Parry',
+              action: 'parries',
               defense:
                 '[[2d6+(@{parry})+(@{weapon-parry})+(@{weapon-offhand-toggle})+(?{Defense modifier&#124;+0&#125;)]]',
             }),
             Block: buildRollTemplate({
               move: 'Block',
+              action: 'blocks',
               defense:
                 '[[2d6+(@{block})+(@{weapon-block})+(@{weapon-offhand-toggle})+(?{Defense modifier&#124;+0&#125;)]]',
             }),
@@ -86,7 +91,8 @@ export default (sheet) => {
         attackMacro = buildRollTemplate('TLBattackRoll', {
           name: `@{character-name}`,
           weapon: `@{weapon-name}`,
-          move: `Shoot`,
+          // move: `Shoot`,
+          action: 'shoots',
           attack: `[[2d6+(@{shoot})+(@{weapon-shoot})+(?{Aimed|No,+0|Yes,@{weapon-acc}})+(?{Attack modifier|+0})]]`,
           note: `?{Note}`,
         })
@@ -102,7 +108,8 @@ export default (sheet) => {
         defenseMacro = buildRollTemplate('TLBattackRoll', {
           name: `@{character-name}`,
           weapon: `@{weapon-name}`,
-          move: `Block`,
+          // move: `Block`,
+          action: 'blocks',
           defense: `[[2d6+(@{block})+(@{weapon-block})+(?{Defense modifier|+0})]]`,
           note: `?{Note}`,
         })

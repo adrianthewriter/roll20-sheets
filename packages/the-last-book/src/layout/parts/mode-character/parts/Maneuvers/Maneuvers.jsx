@@ -19,7 +19,8 @@ const Move = ({ id, label, type, parent, disabled, ...props }) => (
       label="Rat."
       roll={buildRollTemplate('TLBattackRoll', {
         name: '@{character-name}',
-        move: label,
+        // move: label,
+        action: id === 'parry' ? 'parries' : `${id}s`,
         rolltype: 'Attribute',
         [`${type.toLowerCase()}`]: `[[2d6+(@{${id}})+(?{${type} modifier|+0})]]`,
         note: `?{Note}`,
