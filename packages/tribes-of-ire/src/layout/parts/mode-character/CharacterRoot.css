@@ -1,0 +1,54 @@
+/* Hide when not in 'character' mode */
+input[type='hidden'][name*='sheet_mode']:not([value='character'])
+  ~ .mode--character {
+  display: none;
+}
+
+/* Character Sheet Styles */
+.mode--character {
+  grid-column-start: 1;
+  flex-flow: row nowrap;
+
+  & > h1 {
+    flex: none;
+    width: 100%;
+    margin-bottom: var(--base-size);
+  }
+
+  & .sec--main {
+    flex: none;
+    width: stretch;
+    max-width: calc(100% / 8 * 6);
+    margin-right: var(--base-size);
+  }
+
+  & .sec--side {
+    flex: 1;
+    max-width: calc(100% / 8 * 2 - var(--base-size));
+  }
+
+  & .block {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    width: stretch;
+
+    margin-top: var(--base-size);
+    padding-top: var(--base-size);
+    border-top: var(--border-strong);
+
+    & > div {
+      flex: 1;
+      margin-right: var(--base-size);
+    }
+
+    & > div:last-child {
+      margin: 0;
+
+      & > div {
+        display: flex;
+        flex-flow: row wrap;
+      }
+    }
+  }
+}

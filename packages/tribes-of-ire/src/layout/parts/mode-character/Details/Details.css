@@ -1,0 +1,102 @@
+.box--details > .content {
+  display: flex;
+  flex-flow: row wrap;
+
+  & > :first-child {
+    flex: none;
+    width: 35%;
+    margin-top: 0;
+    margin-right: var(--base-size);
+  }
+
+  & > div {
+    flex: 1;
+  }
+
+  & .choice {
+    display: block;
+    margin-bottom: var(--gap-size);
+
+    & > span {
+      font: bold 9px var(--font-label);
+      text-transform: uppercase;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    & label {
+      display: inline-block;
+      width: fit-content;
+      margin: 0 0 0 3px;
+      padding: 0;
+      cursor: pointer;
+      font: 12px var(--font-body);
+
+      & > span {
+        font-style: italic;
+      }
+
+      & input[type='radio'],
+      & input[type='checkbox'] {
+        display: none;
+
+        &:checked + span {
+          text-decoration: underline;
+        }
+      }
+
+      &:not(:last-child)::after {
+        content: ',';
+      }
+
+      &:nth-last-child(2)::after {
+        content: ', or ';
+      }
+    }
+  }
+
+  & h1.logo {
+    flex-flow: column nowrap !important;
+    position: relative;
+    display: block;
+    margin: 0 !important;
+    margin-right: var(--gap-size);
+    padding: 0;
+
+    & > span {
+      display: block;
+      text-align: left;
+      width: stretch;
+      height: fit-content;
+      color: black;
+    }
+
+    & > span.logotype {
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    & > span.subtitle {
+      display: block;
+      width: stretch;
+      padding: 3px 6px;
+      background: black;
+      color: white;
+      border-radius: 2px;
+
+      font-size: 12px;
+      font-family: var(--font-body);
+      line-height: 1;
+    }
+  }
+
+  & .playbook {
+    display: block;
+    margin-top: var(--gap-size);
+    color: black;
+    font: 82px/0.8 var(--font-heading);
+    text-align: left;
+  }
+}

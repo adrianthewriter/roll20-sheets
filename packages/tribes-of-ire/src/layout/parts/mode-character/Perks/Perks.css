@@ -1,0 +1,37 @@
+.box--perks > .content {
+  display: flex;
+  flex-flow: column nowrap;
+
+  & :first-child {
+    margin-top: 0;
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+
+  & .perk {
+    margin: var(--gap-size) 0;
+
+    & .toggle {
+      display: inline-flex;
+      margin: 0;
+      margin-right: -3px;
+      padding: 0;
+    }
+
+    & .toggle:last-of-type {
+      margin-right: var(--gap-size);
+    }
+
+    & .label {
+      padding-right: 3px;
+      font: bold 9px var(--font-label);
+      text-transform: uppercase;
+
+      &::after {
+        content: ':';
+      }
+    }
+  }
+}

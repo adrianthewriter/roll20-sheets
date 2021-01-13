@@ -1,0 +1,222 @@
+input[type='hidden'][name*='sheet_npctype']:not([value='unique'])
+  ~ .box--status:nth-of-type(1),
+input[type='hidden'][name*='sheet_npctype']:not([value='multiple'])
+  ~ .box--status:nth-of-type(2) {
+  display: none;
+}
+
+.box--status {
+  position: relative;
+
+  & .content > .meter {
+    position: absolute;
+    top: 0;
+    right: var(--gap-size);
+  }
+}
+.box--status > .content {
+  & h3 {
+    margin: 0;
+    margin-top: var(--gap-size);
+    width: stretch;
+    font-size: 18px;
+
+    & > span {
+      margin-left: auto;
+      color: #ccc;
+      font: 9px var(--font-label);
+      text-transform: uppercase;
+    }
+  }
+
+  & > .condition {
+    width: stretch;
+  }
+}
+
+.table--goons .tablerow {
+  width: 300px;
+  margin: var(--gap-size) 0;
+  padding: 0 10px;
+  border: var(--border-primary);
+
+  & div {
+    display: flex;
+    flex-flow: row nowrap;
+    width: stretch;
+    border-bottom: var(--border-primary);
+
+    & .field {
+      flex: 1;
+    }
+
+    & .meter {
+      flex: none;
+      width: fit-content;
+
+      & input[type='checkbox'].meterbox + span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: transparent;
+
+        &::before {
+          content: 'S';
+          display: inline-block;
+          font: 12px pictos;
+          color: black;
+          -webkit-text-stroke: 0.8px black;
+          text-stroke: 0.8px black;
+        }
+      }
+
+      & input[type='checkbox'].meterbox:checked + span {
+        background: transparent;
+
+        &::before {
+          color: black;
+        }
+      }
+
+      & :checked ~ input[type='checkbox'].meterbox:not(:checked) + span {
+        background: transparent;
+
+        &::before {
+          color: white;
+        }
+      }
+    }
+  }
+
+  & .field,
+  & .meter {
+    flex: none;
+    width: stretch;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* Mook Health */
+  & input[type='hidden'][name*='rank'][value='0'] ~ .meter input {
+    & + span {
+      margin-right: unset;
+      border-color: black;
+
+      &:nth-of-type(1n + 1) {
+        margin-right: 6px;
+      }
+    }
+
+    &:nth-of-type(5) + span {
+      border-color: firebrick;
+      background: firebrick;
+
+      & ~ input,
+      & ~ span {
+        display: none;
+      }
+    }
+  }
+
+  /* Weak Health */
+  & input[type='hidden'][name*='rank'][value='1'] ~ .meter input {
+    & + span {
+      margin-right: unset;
+      border-color: black;
+
+      &:nth-of-type(2n + 1) {
+        margin-right: 6px;
+      }
+    }
+
+    &:nth-of-type(8) + span {
+      border-color: firebrick;
+      background: firebrick;
+
+      & ~ input,
+      & ~ span {
+        display: none;
+      }
+    }
+  }
+
+  /* Standard Health */
+  & input[type='hidden'][name*='rank'][value='2'] ~ .meter input {
+    & + span {
+      margin-right: unset;
+      border-color: black;
+
+      &:nth-of-type(3n + 1) {
+        margin-right: 6px;
+      }
+    }
+
+    &:nth-of-type(11) + span {
+      border-color: firebrick;
+      background: firebrick;
+
+      & ~ input,
+      & ~ span {
+        display: none;
+      }
+    }
+  }
+
+  /* Strong Health */
+  & input[type='hidden'][name*='rank'][value='3'] ~ .meter input {
+    & + span {
+      margin-right: unset;
+      border-color: black;
+
+      &:nth-of-type(4n + 1) {
+        margin-right: 6px;
+      }
+    }
+
+    &:nth-of-type(14) + span {
+      border-color: firebrick;
+      background: firebrick;
+
+      & ~ input,
+      & ~ span {
+        display: none;
+      }
+    }
+  }
+
+  /* Elite Health */
+  & input[type='hidden'][name*='rank'][value='4'] ~ .meter input {
+    & + span {
+      margin-right: unset;
+      border-color: black;
+
+      &:nth-of-type(5n + 1) {
+        margin-right: 6px;
+      }
+    }
+
+    &:nth-of-type(17) + span {
+      border-color: firebrick;
+      background: firebrick;
+
+      & ~ input,
+      & ~ span {
+        display: none;
+      }
+    }
+  }
+
+  & > .meter input[type='checkbox'].meterbox:not(:checked) + span {
+    background: white !important;
+  }
+
+  & > .meter input[type='checkbox']:last-of-type:checked + span {
+    background: firebrick;
+  }
+
+  & > .field:last-child {
+    border: none;
+  }
+}

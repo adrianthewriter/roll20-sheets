@@ -1,0 +1,258 @@
+.box--aspects > .content {
+  display: flex;
+  flex-flow: column nowrap;
+
+  & :first-child {
+    margin-top: 0;
+  }
+
+  & :last-child {
+    margin-bottom: 0;
+  }
+
+  & h3 {
+    width: stretch;
+    margin-top: var(--base-size);
+  }
+
+  & .field {
+    width: stretch;
+  }
+
+  & .field input[type='text'] {
+    text-align: right;
+  }
+
+  & .table--aspects {
+    /* margin-top: var(--gap-size); */
+    width: stretch;
+    /* border-top: var(--border-secondary); */
+
+    & .tableheader span:nth-child(3) {
+      flex: none;
+      justify-content: center;
+      width: 60px;
+    }
+
+    & .tablerow {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+
+      & > .toggle {
+        height: var(--base-size);
+        margin-top: -2px;
+      }
+
+      & > .aspect {
+        flex: 1;
+        width: stretch;
+        border-right: 0;
+
+        & > .label {
+          padding-right: var(--gap-size);
+          font: bold 9px var(--font-label);
+          text-transform: uppercase;
+
+          &::after {
+            content: ':';
+          }
+        }
+
+        & .text {
+          width: fit-content;
+          padding: 0;
+          font: 12px var(--font-body);
+          font-style: italic;
+        }
+
+        & > .toggle {
+          display: inline-flex;
+          opacity: 0;
+          width: 14px;
+          height: 14px;
+
+          & .togglebox + span::before {
+            content: 'p';
+            font: 12px 'pictos';
+            line-height: 9px;
+            border: none;
+          }
+
+          & .togglebox:checked + span::before {
+            background: transparent;
+            color: firebrick;
+          }
+        }
+
+        &:hover .toggle {
+          opacity: 1;
+        }
+      }
+
+      & input[type='hidden'][name*='decay_max'][value='0'] + .meter {
+        display: none;
+      }
+
+      & .meter {
+        & .label {
+          margin-right: auto;
+        }
+
+        & input[type='hidden'][value='1'] {
+          & ~ input[type='checkbox'][value='2'],
+          & ~ input[type='checkbox'][value='3'],
+          & ~ input[type='checkbox'][value='4'],
+          & ~ input[type='checkbox'][value='5'],
+          & ~ input[type='checkbox'][value='6'],
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='2'] + span,
+          & ~ input[type='checkbox'][value='3'] + span,
+          & ~ input[type='checkbox'][value='4'] + span,
+          & ~ input[type='checkbox'][value='5'] + span,
+          & ~ input[type='checkbox'][value='6'] + span,
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='2'] {
+          & ~ input[type='checkbox'][value='3'],
+          & ~ input[type='checkbox'][value='4'],
+          & ~ input[type='checkbox'][value='5'],
+          & ~ input[type='checkbox'][value='6'],
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='3'] + span,
+          & ~ input[type='checkbox'][value='4'] + span,
+          & ~ input[type='checkbox'][value='5'] + span,
+          & ~ input[type='checkbox'][value='6'] + span,
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='3'] {
+          & ~ input[type='checkbox'][value='4'],
+          & ~ input[type='checkbox'][value='5'],
+          & ~ input[type='checkbox'][value='6'],
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='4'] + span,
+          & ~ input[type='checkbox'][value='5'] + span,
+          & ~ input[type='checkbox'][value='6'] + span,
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='4'] {
+          & ~ input[type='checkbox'][value='5'],
+          & ~ input[type='checkbox'][value='6'],
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='5'] + span,
+          & ~ input[type='checkbox'][value='6'] + span,
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='5'] {
+          & ~ input[type='checkbox'][value='6'],
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='6'] + span,
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='6'] {
+          & ~ input[type='checkbox'][value='7'],
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='7'] + span,
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='7'] {
+          & ~ input[type='checkbox'][value='8'],
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='8'] + span,
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+
+        & input[type='hidden'][value='8'] {
+          & ~ input[type='checkbox'][value='9'],
+          & ~ input[type='checkbox'][value='9'] + span {
+            display: none;
+          }
+        }
+      }
+
+      & .drawer {
+        position: relative;
+        flex-flow: column nowrap;
+        width: stretch;
+        margin-top: var(--gap-size);
+        padding: var(--gap-size);
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+
+        & > input[type='text'] {
+          border-bottom: var(--border-primary);
+        }
+
+        & .toggle {
+          position: absolute;
+          top: var(--gap-size);
+          right: 0;
+
+          & .togglebox + span::before {
+            content: ')';
+            font: 12px 'pictos';
+            line-height: 9px;
+            text-align: center;
+            border: none;
+          }
+
+          & .togglebox:hover + span::before {
+            content: '(';
+            background: transparent;
+            color: firebrick;
+          }
+        }
+
+        & label.field:nth-last-child(2) {
+          border-bottom: none;
+
+          & input[type='text'] {
+            width: 35px;
+          }
+        }
+      }
+    }
+  }
+}

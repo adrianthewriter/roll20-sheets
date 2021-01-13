@@ -1,0 +1,41 @@
+input[type='hidden'][name*='settings'][value='hidden'] ~ .dialog--settings {
+  display: none;
+}
+
+.dialog--settings .content {
+  width: 350px;
+
+  & .block {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    & h3,
+    & p {
+      flex: none;
+      width: stretch;
+    }
+
+    & .toggle {
+      margin: var(--gap-size);
+    }
+  }
+
+  & input[name*='mode']:not([value='character']) ~ .block--character,
+  &
+    input[name*='mode']:not([value='ally']):not([value='enemy'])
+    ~ .block--goon {
+    display: none;
+  }
+
+  & .block--character,
+  & .block--goon {
+    margin-top: var(--base-size);
+    padding-top: var(--base-size);
+    border-top: var(--border-light);
+
+    & .toggle {
+      width: calc(50% - (var(--gap-size) * 2));
+    }
+  }
+}

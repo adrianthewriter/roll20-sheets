@@ -1,0 +1,80 @@
+.box {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-row-gap: 0;
+  align-self: start;
+
+  & h2 {
+    position: relative;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    height: var(--base-size);
+    padding: 0;
+  }
+
+  & h2 > .label {
+    margin: 0;
+    margin-right: auto;
+    padding-top: 1px;
+    color: black;
+    font-family: var(--font-heading);
+    font-size: 24px;
+  }
+
+  & h2 > .toggle {
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+  }
+
+  & h2 > .toggle input[type='checkbox'] {
+    display: block;
+    width: var(--base-size);
+    height: var(--base-size);
+    margin-right: calc(var(--base-size) * -1);
+
+    & + span {
+      display: flex;
+      width: var(--base-size);
+      height: var(--base-size);
+
+      text-align: center;
+      align-content: center;
+      justify-content: center;
+
+      color: black;
+      font: 22px var(--font-label);
+      font-weight: normal;
+    }
+
+    & + span::before {
+      all: unset;
+      content: '-';
+    }
+
+    &:checked + span::before {
+      all: unset;
+      content: '+';
+    }
+  }
+
+  /* Box outlines */
+  & .content {
+    flex-flow: column nowrap;
+  }
+  /* & .content {
+    margin-top: 2px;
+    padding: var(--gap-size) 0;
+
+    border-top: var(--border-strong);
+    border-bottom: var(--border-strong);
+  } */
+
+  /* Toggle Box Content */
+  & .toggle[value='hidden'] ~ .content {
+    display: none;
+  }
+}

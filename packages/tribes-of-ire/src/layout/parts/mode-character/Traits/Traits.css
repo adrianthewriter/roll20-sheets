@@ -1,0 +1,69 @@
+.box--traits > .content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  & .trait {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+
+    flex: none;
+    width: calc((100% - var(--gap-size)) / 2);
+    height: calc(var(--base-size) * 3);
+    margin-right: var(--gap-size);
+    margin-bottom: var(--gap-size);
+    padding: 0 var(--gap-size);
+    border: var(--border-strong);
+    border-radius: 2px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    & button[type='roll'] {
+      width: stretch;
+      font: 16px var(--font-heading);
+
+      &::after {
+        content: none;
+      }
+    }
+    & .multitoggle {
+      align-items: flex-start;
+      height: calc(var(--base-size) * 3);
+    }
+
+    & .multitoggle input[type='checkbox'] + span {
+      font-size: 24px;
+    }
+
+    & .toggle {
+      position: absolute;
+      bottom: -1px;
+      right: -10px;
+
+      & input[type='checkbox'].togglebox {
+        width: 15px;
+        height: 15px;
+        margin-right: -15px;
+      }
+
+      & input[type='checkbox'].togglebox + span::before {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  & .stats {
+    width: 100%;
+
+    & input[type='text'] {
+      flex: none;
+      width: 45px;
+      margin-left: auto;
+      text-align: center;
+    }
+  }
+}

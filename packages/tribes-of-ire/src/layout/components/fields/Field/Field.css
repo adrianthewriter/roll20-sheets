@@ -1,0 +1,59 @@
+label.field {
+  all: unset;
+  display: flex;
+  flex-flow: row nowrap;
+  border-bottom: var(--border-primary);
+
+  & > button[type='roll'] span,
+  & > span {
+    display: flex;
+    align-items: start;
+
+    flex: none;
+    margin-right: 6px;
+    padding-top: 5px;
+    width: fit-content;
+    font: 12px var(--font-label);
+    text-transform: uppercase;
+
+    &::after {
+      content: none;
+    }
+  }
+
+  & > span.sep {
+    margin: 0;
+  }
+}
+
+input.field,
+textarea.field,
+select.field {
+  all: unset;
+  flex: 1;
+  width: 100%;
+  height: var(--base-size);
+
+  &:hover,
+  &:focus,
+  &:focus-within {
+    transition: background-color 300ms ease;
+  }
+}
+
+select.field {
+  padding-top: 4px;
+}
+
+textarea.field {
+  resize: vertical;
+  height: stretch;
+  min-height: 70px;
+  padding-top: 3px;
+  padding-right: 3px;
+  line-height: 22px;
+}
+
+::placeholder {
+  color: #ccc;
+}

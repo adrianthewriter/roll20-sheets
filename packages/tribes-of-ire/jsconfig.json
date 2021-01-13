@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "target": "es2015",
+    "module": "es2015",
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["assets/*", "assets"],
+      "@layout/*": ["layout/*", "layout"],
+      "@scripts/*": ["scripts/*", "scripts"],
+      "@templates/*": ["templates/*", "templates"],
+      "@components/*": ["layout/components/*", "layout/components"]
+    },
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": ["lib/**/*", "src/**/*"],
+  "typeAcquisition": { "include": ["dotenv"] }
+}
