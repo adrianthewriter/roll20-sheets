@@ -1,0 +1,51 @@
+.multitoggle {
+  all: unset;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  height: var(--base-size);
+
+  & input[type='checkbox'].option {
+    position: absolute;
+    width: 100%;
+    height: var(--base-size);
+
+    opacity: 0;
+    z-index: 1;
+    -moz-appearance: none;
+
+    & ~ span {
+      position: absolute;
+      display: none;
+      width: 100%;
+      height: var(--base-size);
+      justify-content: center;
+      align-items: center;
+
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: normal;
+      text-align: center;
+    }
+
+    &:checked + span {
+      display: flex;
+    }
+
+    /* Toggle Options */
+    &:first-child {
+      z-index: 2;
+    }
+
+    &:nth-child(1):checked ~ .option:nth-child(3),
+    &:nth-child(3):checked ~ .option:nth-child(5),
+    &:nth-child(5):checked ~ .option:nth-child(7),
+    &:nth-child(7):checked ~ .option:nth-child(9),
+    &:nth-child(9):checked ~ .option:nth-child(11) {
+      z-index: 3;
+    }
+  }
+}

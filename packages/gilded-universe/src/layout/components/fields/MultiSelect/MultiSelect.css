@@ -1,0 +1,59 @@
+.multiselect {
+  all: unset;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+
+  & input[type='radio'].option {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: stretch;
+    min-height: var(--base-size);
+    margin-bottom: calc(-1 * var(--base-size));
+
+    opacity: 0;
+    z-index: 1;
+    -moz-appearance: none;
+
+    cursor: pointer;
+
+    & ~ span {
+      position: relative;
+      display: none;
+      width: 100%;
+      min-height: var(--base-size);
+      justify-content: center;
+      align-items: center;
+
+      font-size: 14px;
+      font-family: var(--font-body);
+      font-weight: normal;
+      text-align: center;
+
+      & .desc {
+        display: block;
+      }
+    }
+
+    &:first-child {
+      z-index: 2;
+    }
+
+    &:checked ~ .option {
+      display: none;
+    }
+
+    &:checked + span {
+      display: block;
+    }
+
+    &:first-child:checked ~ .option,
+    &:first-child:checked ~ span {
+      display: block;
+    }
+  }
+}

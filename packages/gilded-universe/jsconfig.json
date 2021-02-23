@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "checkJs": false,
+    "target": "es2015",
+    "module": "es2015",
+    "baseUrl": "src",
+    "paths": {
+      "@assets/*": ["/assets/*"],
+      "@components/*": ["/layout/components/*"],
+      "@layout/*": ["/layout/*"],
+      "@scripts/*": ["/scripts/*"],
+      "@templates/*": ["/templates/*"]
+    },
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**/*"]
+}

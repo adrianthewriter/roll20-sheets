@@ -1,0 +1,94 @@
+input[type='hidden'][name*='dialog_session-log'][value='hidden']
+  ~ .dialog--session-log {
+  display: none;
+}
+
+.dialog--session-log .content {
+  width: 350px;
+
+  & .tablerow {
+    & > .toggle,
+    & input[type='text'] {
+      height: var(--base-size);
+      border: none;
+    }
+
+    & > .toggle input[type='checkbox'] + span::before {
+      all: unset;
+      content: '-';
+      display: block;
+      width: 19px;
+      padding-bottom: 4px;
+      font: normal 16px var(--font-title);
+      text-align: center;
+    }
+
+    & > .toggle input[type='checkbox']:checked + span::before {
+      content: '+';
+      background: transparent;
+    }
+  }
+
+  & .repcontainer {
+    border: none;
+  }
+
+  & .repitem .tablerow {
+    border-top: 1px solid black;
+  }
+
+  & .repitem:first-child .tablerow {
+    border-top: 2px solid black;
+  }
+
+  & .repitem:last-child .tablerow {
+    border-bottom: 2px solid black;
+  }
+
+  & .tableheader span:nth-child(3),
+  & .field:nth-child(4) {
+    flex: none;
+    width: 90px;
+    justify-content: center;
+  }
+
+  & .field:nth-child(4) {
+    border-left: 1px solid black !important;
+    text-align: center;
+  }
+
+  & .drawer {
+    flex: none;
+    width: stretch;
+    border-top: 1px dashed black;
+
+    & textarea {
+      flex: none;
+      width: stretch;
+      border-bottom: 1px dashed black;
+    }
+
+    & .toggle {
+      flex: none;
+      width: fit-content;
+      height: 20px;
+      margin-left: auto;
+
+      & > span {
+        font-size: 12px !important;
+      }
+    }
+  }
+
+  & .tablerow input[type='hidden'][name*='header'][value='checked'] ~ {
+    & .toggle,
+    & .field,
+    & .drawer {
+      background: #eee;
+    }
+
+    & .field:nth-child(4) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+
+  margin-bottom: var(--base-size);
+  padding: var(--gap-size) 0;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+
+  & > div {
+    flex: 1;
+  }
+
+  & > div:nth-child(2) {
+    flex: none;
+    width: 45%;
+  }
+
+  & .container {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 21px;
+
+    & .field input[type='text'] {
+      text-align: center;
+    }
+
+    & .toggle {
+      border-bottom: 1px solid black;
+    }
+
+    & input[name*='dialog_session-log'][type='checkbox'].togglebox + span {
+      &::before {
+        all: unset;
+        content: 'W';
+        font: normal 14px 'Pictos';
+        padding-top: 1px;
+      }
+    }
+  }
+}

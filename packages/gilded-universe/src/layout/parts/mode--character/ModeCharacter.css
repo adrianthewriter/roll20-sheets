@@ -1,0 +1,33 @@
+.mode.mode--character {
+  display: flex;
+  flex-flow: row wrap;
+
+  & .header {
+    flex: none;
+    width: stretch;
+  }
+
+  & .sec--main {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 4;
+    margin-right: var(--base-size);
+    border-right: 2px solid black;
+
+    & > div {
+      flex: 1;
+    }
+
+    & > div:first-child {
+      flex: none;
+      width: 249px;
+      margin-right: calc(var(--gap-size) * 2);
+      padding-right: calc(var(--gap-size) * 2);
+      border-right: 2px solid black;
+    }
+  }
+
+  & .sec--side {
+    flex: 3;
+  }
+}

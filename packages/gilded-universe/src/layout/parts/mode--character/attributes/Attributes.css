@@ -1,0 +1,118 @@
+.group--attrs > .label {
+  height: calc(100% - 3px);
+}
+
+.group--attrs > .content {
+  display: flex;
+  flex-flow: row wrap;
+
+  & .attr {
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+
+    flex: none;
+    width: calc((100% - var(--gap-size)) / 2);
+    height: calc(var(--base-size) * 3);
+    margin-right: var(--gap-size);
+    margin-bottom: var(--gap-size);
+    padding: 0 var(--gap-size);
+    border: var(--border-strong);
+    border-radius: 2px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(3),
+    &:nth-child(4) {
+      margin-bottom: 0;
+    }
+
+    & span {
+      display: flex;
+      width: stretch;
+      justify-content: center;
+      font: 14px var(--font-heading);
+    }
+
+    & .field {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    & .toggle {
+      position: absolute;
+      bottom: -1px;
+      right: -10px;
+
+      & input[type='checkbox'].togglebox {
+        width: 15px;
+        height: 15px;
+        margin-right: -15px;
+      }
+
+      & input[type='checkbox'].togglebox + span::before {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
+
+.group--stats > .label {
+  height: calc(100% - 3px);
+}
+
+.group--stats > .content {
+  & > .field,
+  & > div > .field {
+    margin-bottom: var(--gap-size);
+    border: 2px solid black;
+
+    & input[type='text'] {
+      text-align: center;
+      width: 28.5px;
+    }
+
+    & > span:first-child,
+    & > button[type='roll'] {
+      width: 90px;
+      margin: 0;
+      padding: var(--gap-size) calc(var(--gap-size) * 2);
+      border-right: 1px solid black;
+      font: 12px var(--font-heading);
+    }
+
+    & > button[type='roll'] > span {
+      margin: 0;
+      padding: 0;
+      font: 12px var(--font-heading);
+    }
+
+    & > button[type='roll']::after {
+      content: none;
+    }
+  }
+
+  & > .field:last-child {
+    margin-bottom: 0;
+  }
+
+  & > div {
+    display: flex;
+    flex-flow: row nowrap;
+
+    & .field {
+      flex: 1;
+    }
+
+    & .field:first-child {
+      margin-right: var(--gap-size);
+    }
+
+    & .field span {
+      width: fit-content !important;
+    }
+  }
+}

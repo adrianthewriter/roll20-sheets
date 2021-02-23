@@ -1,0 +1,201 @@
+.rolltemplate-skillRoll,
+.rolltemplate-reactionRoll {
+  /* Custom CSS Properties:
+   * Usage: var(--property-name)
+   */
+
+  /* Fonts (custom fonts declared in @import rule above) */
+  --font-title: 'Allerta Stencil', sans-serif;
+  --font-heading: 'Allerta', sans-serif;
+  --font-label: 'Lato', sans-serif;
+  --font-body: 'Lora', serif;
+
+  /* Spacing and Sizing */
+  --gap-size: 6px;
+  --base-size: 25px;
+
+  /* Other Custom Properties */
+  --field-hover-color: rgba(245, 222, 179, 0.6);
+
+  --border-primary: 1px solid black;
+  --border-secondary: 1px dashed black;
+  --border-strong: 2px solid black;
+
+  & .rollbox {
+    all: unset;
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    width: stretch;
+    height: fit-content;
+
+    border: 2px solid black;
+    border-left: 5px solid black;
+    border-right: 5px solid black;
+    border-radius: 2px;
+    box-shadow: 6px 6px 0 0 black;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      border-top: 9px solid black;
+      border-left: 9px solid transparent;
+      width: 0;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+      border-top: 9px solid transparent;
+      border-left: 9px solid black;
+      width: 0;
+    }
+
+    & .rollheader {
+      position: relative;
+      padding: 10px;
+      padding-bottom: 0;
+      background-color: black;
+    }
+
+    & p.rollprelude {
+      color: #aaa;
+      font: 14px var(--font-heading);
+      line-height: 1;
+
+      & span:not([class]) {
+        &::before,
+        &::after {
+          content: ' ';
+        }
+      }
+
+      & em {
+        color: #eee;
+
+        &::after {
+          content: ' ';
+        }
+      }
+    }
+
+    & .rolltitle {
+      display: block;
+      color: white;
+      font: 16px var(--font-title);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    & .rollcontent {
+      padding: 10px;
+      padding-top: 15px;
+      background: white;
+    }
+
+    & .rolleffect {
+      display: block;
+      color: black;
+      font: 14px var(--font-body);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    & .rolloutput {
+      display: block;
+      padding: 6px 0 0;
+      text-align: center;
+      color: #aaa;
+      font: 14px var(--font-mono);
+      text-transform: none;
+
+      & .inlinerollresult,
+      & .inlinerollresult.fullcrit,
+      & .inlinerollresult.fullfail {
+        display: inline-block;
+        padding: 3px;
+        font-weight: bold;
+        color: black;
+      }
+
+      & .inlinerollresult.fullcrit {
+        color: green;
+      }
+      & .inlinerollresult.fullfail {
+        color: red;
+      }
+
+      & .rollfumble {
+        display: block;
+        padding: 6px;
+        text-align: center;
+        font-weight: normal;
+        font-size: 18px;
+        color: firebrick;
+      }
+
+      & .rollsuccess {
+        display: block;
+        padding: 6px;
+        text-align: center;
+        font-weight: normal;
+        font-size: 18px;
+        color: grey;
+      }
+
+      & .rollcrit {
+        display: block;
+        margin: 6px;
+        text-align: center;
+        font-weight: normal;
+        font-size: 18px;
+        color: green;
+      }
+
+      & .rollresult {
+        display: block;
+        margin: 6px;
+        text-align: center;
+        font-weight: normal;
+        font-size: 18px;
+        color: black;
+      }
+
+      & .rollchance::before {
+        content: ' ';
+      }
+    }
+
+    & hr {
+      margin: 6px 0 !important;
+      padding: 0 !important;
+      border-top: 1px solid black;
+    }
+
+    & .rollnote {
+      font: italic 14px var(--font-body);
+      color: #666;
+    }
+
+    & .inlinerollresult {
+      border: none;
+      background: transparent;
+      padding: unset;
+      font-weight: unset;
+      font-size: unset;
+
+      &.fullfail {
+        border: none;
+        color: firebrick;
+      }
+      &.fullcrit {
+        border: none;
+        color: green;
+      }
+    }
+  }
+}

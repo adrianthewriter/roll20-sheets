@@ -1,0 +1,183 @@
+.box--equipment {
+  position: relative;
+  flex: none !important;
+  width: stretch;
+  padding-right: calc(var(--gap-size) * 2);
+
+  margin-top: calc(var(--gap-size) * 2);
+  padding-top: calc(var(--gap-size) * 2);
+  border-top: 3px solid black;
+}
+
+.box--equipment .content {
+  & > .field {
+    position: absolute;
+    top: calc(var(--gap-size) * 2);
+    right: calc(var(--gap-size) * 2);
+    width: 120px;
+    height: var(--base-size);
+
+    & input[type='text'] {
+      text-align: center;
+    }
+  }
+
+  & > span {
+    display: block;
+    margin-top: var(--gap-size);
+  }
+}
+
+.table--equipment {
+  counter-reset: equipment;
+
+  & .tablerow {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    height: fit-content;
+    margin: var(--gap-size) 0;
+    background: white;
+    border: 2px solid black !important;
+
+    --notchSize: 9px;
+    clip-path: polygon(
+      0% var(--notchSize),
+      var(--notchSize) 0%,
+      100% 0%,
+      100% 100%,
+      100% calc(100% - var(--notchSize)),
+      calc(100% - var(--notchSize)) 100%,
+      100% 100%,
+      0% 100%
+    );
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: -3px;
+      border-top: 2px solid black;
+      width: 10px;
+      transform: rotate(135deg);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      right: -2px;
+      border-top: 2px solid black;
+      width: 10px;
+      transform: rotate(-45deg);
+    }
+  }
+
+  & .repitem::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    z-index: -1;
+    display: block;
+    width: stretch;
+    height: stretch;
+    background: black;
+
+    --notchSize: 9px;
+    clip-path: polygon(
+      0% var(--notchSize),
+      var(--notchSize) 0%,
+      100% 0%,
+      100% 100%,
+      100% calc(100% - var(--notchSize)),
+      calc(100% - var(--notchSize)) 100%,
+      100% 100%,
+      0% 100%
+    );
+  }
+
+  & .field {
+    flex: none !important;
+    width: stretch;
+    border: none;
+
+    & > span {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      width: 30px;
+      padding: 2px 0;
+      margin: 0;
+      border-right: 1px solid black;
+    }
+
+    & > span::before {
+      counter-increment: equipment;
+      content: '-';
+      font: 16px var(--font-heading);
+    }
+
+    & > span,
+    & input[type='text'],
+    & textarea {
+      min-height: var(--base-size);
+    }
+
+    & input[type='text'],
+    & textarea {
+      flex: 1 !important;
+    }
+
+    & input[type='text'],
+    & textarea {
+      padding: 0 var(--gap-size);
+    }
+
+    & input[type='text'] {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  & .repitem:nth-child(1) .field > span::before,
+  & .repitem:nth-child(2) .field > span::before,
+  & .repitem:nth-child(3) .field > span::before,
+  & .repitem:nth-child(4) .field > span::before,
+  & .repitem:nth-child(5) .field > span::before,
+  & .repitem:nth-child(6) .field > span::before {
+    content: counter(equipment);
+  }
+
+  & .toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 30px;
+    height: 25px;
+    padding: 0;
+    opacity: 0;
+  }
+
+  & .toggle input[type='checkbox'].togglebox {
+    width: 30px;
+    height: 25px;
+  }
+
+  & .field:nth-child(3),
+  & .field:nth-child(4) {
+    display: none;
+  }
+
+  & .toggle[type='hidden']:not([value='expand']) ~ .field:nth-child(3),
+  & .toggle[type='hidden'][value='expand'] ~ .field:nth-child(4) {
+    display: flex;
+  }
+}
+
+.table--other-items {
+  & .field {
+    border-bottom: 1px solid black;
+  }
+}

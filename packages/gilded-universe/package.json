@@ -1,0 +1,31 @@
+{
+  "name": "gilded-universe",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "runesmith start",
+    "build": "runesmith build"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "runesmith": "https://github.com/adrianthewriter/runesmith"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  }
+}
