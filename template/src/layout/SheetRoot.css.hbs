@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css?family=Syne+Tactile|Staatliches|Lato|Lora&display=swap');
+
+/* The root div (div.root) wraps your entire character sheet. Many swordsmith features rely
+* on it, so don't remove or rename it.
+*/
+.root {
+  /* Custom CSS Properties:
+* Usage: var(--property-name)
+*/
+
+  /* Fonts (custom fonts declared in @import rule above) */
+  --font-title: 'Syne Tactile', sans-serif;
+  --font-heading: 'Staatliches', sans-serif;
+  --font-label: 'Lato', sans-serif;
+  --font-body: 'Lora', serif;
+
+  /* Spacing and Sizing */
+  --gap-size: 6px;
+  --base-size: 25px;
+
+  /* Other Custom Properties */
+  --field-hover-color: rgba(245, 222, 179, 0.6);
+
+  --border-primary: 1px solid black;
+  --border-secondary: 1px dashed black;
+  --border-strong: 3px solid black;
+  --border-light: 1px solid #ccc;
+
+  /* Edit your custom root level styles after this point. Note that
+* component styles should be placed in component specific files.
+*/
+  position: relative;
+  display: block;
+
+  height: fit-content;
+  min-height: stretch;
+
+  background: transparent;
+  font: normal normal 14px var(--font-body);
+
+  & *,
+  & *::before,
+  & *::after {
+    box-sizing: border-box !important;
+  }
+
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    font-family: var(--font-heading);
+    font-weight: normal;
+    font-style: normal;
+    text-transform: capitalize;
+
+    margin-top: var(--gap-size);
+
+    & > span {
+      color: inherit;
+      font: inherit;
+      text-transform: inherit;
+    }
+  }
+
+  & p,
+  & li {
+    font-family: var(--font-body);
+    font-size: 14px;
+  }
+}
