@@ -1,6 +1,7 @@
-import RunesmithSheetWorkers from './util/runesmith-helper'
+import { name, version } from '../../package.json' // Pull name and version from package.json!
+import { RunesmithSheetWorkers } from 'runesmith'
 
-const sheet = new RunesmithSheetWorkers()
+const sheet = new RunesmithSheetWorkers(name, version)
 
 sheet
   .listen('sheet:opened')

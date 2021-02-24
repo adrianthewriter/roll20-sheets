@@ -55,7 +55,7 @@
     z-index: -1;
     display: block;
     width: stretch;
-    height: stretch;
+    height: 29px;
     background: black;
 
     --notchSize: 9px;
