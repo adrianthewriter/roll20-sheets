@@ -17054,8 +17054,8 @@ run-queue@^1.0.0, run-queue@^1.0.3:
     aproba "^1.1.1"
 
 "runesmith@https://github.com/adrianthewriter/runesmith":
-  version "0.0.5"
-  resolved "https://github.com/adrianthewriter/runesmith#3e00a8611c052ab150029f2f4edf64952c54d0e4"
+  version "0.0.6"
+  resolved "https://github.com/adrianthewriter/runesmith#fe71c0fc8732c611aa92aecafe4aaa63b929bc89"
   dependencies:
     "@babel/core" "^7.12.10"
     "@babel/preset-env" "^7.12.11"

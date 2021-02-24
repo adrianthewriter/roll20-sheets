@@ -25,4 +25,5 @@ yarn-error.log*
 
 /packages/**/node_modules
 /packages/**/.vscode
+/packages/**/build
 /packages/runesmith-test
