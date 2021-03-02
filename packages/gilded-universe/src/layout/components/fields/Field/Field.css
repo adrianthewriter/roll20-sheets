@@ -1,10 +1,12 @@
-label.field {
+label.field,
+div.field {
   all: unset;
   display: flex;
   flex-flow: row nowrap;
   border-bottom: var(--border-primary);
 
   & > button[type='roll'] span,
+  & > button[type='action'] span,
   & > span {
     display: flex;
     align-items: flex-start;

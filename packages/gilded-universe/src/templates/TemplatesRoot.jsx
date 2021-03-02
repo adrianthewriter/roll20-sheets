@@ -2,6 +2,7 @@ import React from 'react'
 
 import ReactionRoll from './ReactionRoll/ReactionRoll'
 import SkillRoll from './SkillRoll/SkillRoll'
+import MoneyRoll from './StartingMoneyRoll/StartingMoneyRoll'
 
 const Wrapper = (props) => {
   return React.Children.map(props.children, (child) => (
@@ -13,5 +14,6 @@ export default () => (
   <Wrapper>
     <ReactionRoll />
     <SkillRoll />
+    <MoneyRoll />
   </Wrapper>
 )

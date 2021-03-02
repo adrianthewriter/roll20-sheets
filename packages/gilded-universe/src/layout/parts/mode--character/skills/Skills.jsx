@@ -15,7 +15,7 @@ const Skill = ({ id, label, attr, ...props }) => (
     <Field
       id={id}
       label={`${label} (${attr.toUpperCase()})`}
-      roll={`&{template:skillRoll} {{name=@{character-name}}} {{title=${label} (${attr.toUpperCase()})}} {{marked=[[@{${attr}-marked}]]}} @{${id}_formula} `}
+      roll={`&{template:skillRoll} {{name=@{character-name}}} {{title=${label} (${attr.toUpperCase()})}}  @{${id}_formula} `}
     />
   </>
 )

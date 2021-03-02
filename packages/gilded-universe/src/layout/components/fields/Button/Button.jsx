@@ -10,7 +10,7 @@ const RollButton = ({ id, roll, ...props }) => (
   </button>
 )
 
-const ActionButton = ({ id, action, ...props }) => (
+const ActionButton = ({ id, ...props }) => (
   <button type="action" name={`act_${id}`} {...props}>
     {props.children && <span>{props.children}</span>}
   </button>
@@ -20,17 +20,23 @@ const InnerButton = ({ id, roll, action, ...props }) => {
   if (roll) {
     return <RollButton id={id} roll={roll} {...props} />
   } else if (action) {
-    return <ActionButton id={id} action={action} {...props} />
+    return <ActionButton id={id} {...props} />
   } else {
     return null
   }
 }
 
-const Button = ({ id, type, className, ...props }) => {
+const Button = ({ id, roll, action, hidden, className, ...props }) => {
+  const type = roll ? 'roll' : action ? 'action' : 'text'
   return (
     <InnerButton
       id={id}
-      className={c(type && styles[type], props.className) || null}
+      type={type}
+      roll={roll}
+      action={action}
+      className={
+        c(type && styles[type], hidden && styles['hidden'], className) || null
+      }
       {...props}
     />
   )
@@ -38,15 +44,14 @@ const Button = ({ id, type, className, ...props }) => {
 
 Button.propTypes = {
   id: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['button', 'text']),
 }
 
 Button.defaultProps = {
-  type: 'text',
   label: false,
   tooltip: false,
   placeholder: null,
   className: null,
+  hidden: false,
 }
 
 export default Button

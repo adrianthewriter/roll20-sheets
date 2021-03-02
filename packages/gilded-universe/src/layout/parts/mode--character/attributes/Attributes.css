@@ -76,7 +76,8 @@
     }
 
     & > span:first-child,
-    & > button[type='roll'] {
+    & > button[type='roll'],
+    & > button[type='action'] {
       width: 90px;
       margin: 0;
       padding: var(--gap-size) calc(var(--gap-size) * 2);
@@ -84,15 +85,22 @@
       font: 12px var(--font-heading);
     }
 
-    & > button[type='roll'] > span {
+    & > button[type='roll'] > span,
+    & > button[type='action'] > span {
       margin: 0;
       padding: 0;
       font: 12px var(--font-heading);
     }
 
-    & > button[type='roll']::after {
+    & > button[type='roll']::after,
+    & > button[type='action']::after {
       content: none;
     }
+  }
+
+  & > div.field > .field {
+    border: none;
+    margin: 0;
   }
 
   & > .field:last-child {

@@ -113,7 +113,7 @@ const InnerField = ({ hidden, displayOnly, type, ...props }) => {
 const Field = ({ id, label, ...props }) => {
   if (props.roll && label) {
     return (
-      <label
+      <div
         title={props.tooltip ? props.tooltip : null}
         className={c(styles.field, props.className) || null}
       >
@@ -121,7 +121,19 @@ const Field = ({ id, label, ...props }) => {
           {label}
         </Button>
         <InnerField id={id} {...props} />
-      </label>
+      </div>
+    )
+  } else if (props.action && label) {
+    return (
+      <div
+        title={props.tooltip ? props.tooltip : null}
+        className={c(styles.field, props.className) || null}
+      >
+        <Button id={props.action} action>
+          {label}
+        </Button>
+        <InnerField id={id} {...props} />
+      </div>
     )
   } else if (label) {
     return (

@@ -34,6 +34,10 @@
   &:hover {
     color: firebrick !important;
   }
+
+  &.hidden {
+    display: none !important;
+  }
 }
 
 /* Remove Action button icon */

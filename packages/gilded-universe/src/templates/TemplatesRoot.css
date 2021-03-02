@@ -1,5 +1,6 @@
 .rolltemplate-skillRoll,
-.rolltemplate-reactionRoll {
+.rolltemplate-reactionRoll,
+.rolltemplate-moneyRoll {
   /* Custom CSS Properties:
    * Usage: var(--property-name)
    */
@@ -117,7 +118,7 @@
       & .inlinerollresult.fullcrit,
       & .inlinerollresult.fullfail {
         display: inline-block;
-        padding: 3px;
+        padding: 0;
         font-weight: bold;
         color: black;
       }
@@ -179,11 +180,18 @@
     & .rollnote {
       font: italic 14px var(--font-body);
       color: #666;
+
+      & .inlinerollresult {
+        color: #666 !important;
+        font-weight: normal !important;
+        padding: 0 !important;
+      }
     }
 
     & .inlinerollresult {
       border: none;
       background: transparent;
+      margin: unset;
       padding: unset;
       font-weight: unset;
       font-size: unset;
