@@ -1,0 +1,92 @@
+.root .field {
+  all: unset;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  width: stretch;
+  margin: 0;
+  padding: 0;
+
+  font: normal 16px / var(--base-size) var(--font-body);
+  border-bottom: var(--border-primary);
+
+  & > button[type='roll'].label,
+  & > button[type='action'].label,
+  & > span.label {
+    all: unset;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex: none;
+    width: fit-content;
+    margin-top: 2px;
+    margin-right: var(--gap-size);
+    font: 12px var(--font-label);
+    text-transform: capitalize;
+
+    &::after {
+      content: ':';
+    }
+  }
+
+  & > span.sep {
+    &::after {
+      content: '/';
+    }
+  }
+
+  & input.innerfield,
+  & textarea.innerfield,
+  & select.innerfield {
+    all: unset;
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: var(--base-size);
+
+    font: normal 16px / var(--base-size) var(--font-body);
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      transition: background-color 300ms ease;
+    }
+  }
+
+  & select.innerfield {
+    padding-top: 4px;
+  }
+
+  & textarea.innerfield {
+    resize: vertical;
+    height: stretch;
+    min-height: 70px;
+    padding-top: 3px;
+    padding-right: 3px;
+    line-height: 22px;
+  }
+}
+
+.root input[list].field {
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0;
+    transform: scale(0.6);
+  }
+}
+
+.root textarea.field {
+  resize: vertical;
+  height: stretch;
+  min-height: 70px;
+  padding-top: 3px;
+  padding-right: 3px;
+  line-height: 22px;
+}
+
+::placeholder {
+  color: #ccc;
+}

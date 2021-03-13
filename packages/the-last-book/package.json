@@ -1,27 +1,14 @@
 {
   "name": "the-last-book",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@adrianthewriter/swordsmith": "file:/Code Projects/swordsmith",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "change-case": "^4.1.1",
-    "classnames": "^2.2.6",
-    "prettier": "^2.0.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
-  },
   "scripts": {
-    "start": "swordsmith start",
-    "build": "swordsmith build",
-    "test": "swordsmith test",
-    "eject": "react-scripts eject"
+    "start": "runesmith start",
+    "build": "runesmith build"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "runesmith": "adrianthewriter/runesmith#march-2021"
   },
   "browserslist": {
     "production": [

@@ -1,0 +1,23 @@
+.logo {
+  width: fit-content;
+  height: fit-content;
+  margin: 0;
+}
+
+.logomark img {
+  width: 180px;
+}
+
+.subtitle {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+
+  font: 14px var(--font-heading);
+  text-transform: capitalize;
+
+  &::before,
+  &::after {
+    content: ' — ';
+  }
+}

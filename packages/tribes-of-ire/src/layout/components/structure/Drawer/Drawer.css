@@ -1,9 +1,0 @@
-.drawer {
-  display: flex;
-  flex-flow: row wrap;
-  padding: var(--gap-size) 0;
-}
-
-.toggle[value='hidden'] + .drawer {
-  display: none !important;
-}

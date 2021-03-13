@@ -1,15 +1,19 @@
 import React from 'react'
 import c from 'classnames'
-import { name } from '../../package.json'
+import pkg from '../../package.json'
 
-import { Settings, Header, CharacterSheet } from '@layout/parts'
 import styles from './SheetRoot.css'
-import '@components'
+
+import { Settings, SessionLogDialog, Character } from '@layout'
 
 export default () => (
-  <div className={c(styles.root, `sheet-${name.replace(/-/g, '')}`) || null}>
-    <Settings.SheetMode />
-    <Header />
-    <CharacterSheet />
+  <div
+    className={c(styles.root, `sheet-${pkg.name.replace(/-/g, '')}`) || null}
+  >
+    <Settings.Dialogs />
+    <Settings.Mode />
+    <Settings.Show />
+    <SessionLogDialog />
+    <Character />
   </div>
 )

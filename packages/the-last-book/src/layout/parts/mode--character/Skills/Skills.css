@@ -1,0 +1,277 @@
+.skills {
+  display: block;
+
+  & > option {
+    display: none;
+  }
+}
+
+.skillset {
+  width: stretch;
+}
+
+/* .skills {
+  & .repitem {
+    border: none;
+  }
+
+  & .repitem:not(:first-child) .skillset {
+    margin-top: var(--gap-size);
+    border-top: var(--border-strong);
+  }
+} */
+
+.skill {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  &:not(:first-of-type) {
+    border-bottom: var(--border-primary);
+  }
+
+  &:first-of-type {
+    background: #eee;
+    border-top: var(--border-primary);
+    border-bottom: 3px double black;
+  }
+
+  & > .toggle {
+    position: relative;
+    z-index: 10;
+    width: var(--base-size);
+    height: var(--base-size);
+    padding: 0;
+
+    & input[type='checkbox'].togglebox + span {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    & input[type='checkbox'].togglebox + span::before {
+      all: unset;
+      content: '-';
+      display: block;
+      width: var(--base-size);
+      font: normal 16px var(--font-mono);
+      text-align: center;
+      background: transparent !important;
+    }
+
+    & input[type='checkbox'].togglebox:checked + span::before {
+      content: '+';
+    }
+  }
+
+  & > input[type='text'].field {
+    flex: 1;
+    width: 100%;
+    padding: 0 6px;
+    border: none;
+  }
+
+  & > button[type='roll'] {
+    flex: 1;
+    width: 100%;
+    border: none;
+
+    & span {
+      font-size: 16px !important;
+    }
+
+    & span[name$='chance']::after {
+      content: '%';
+    }
+  }
+
+  & .drawer {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: none;
+    width: stretch;
+  }
+
+  & .drawer > textarea.field {
+    border: none;
+    border-top: var(--border-dashed);
+    padding: 0 6px;
+    /* padding-left: calc(var(--base-size) + 6px); */
+  }
+
+  & .drawer > .container {
+    display: flex;
+    flex-flow: row nowrap;
+    height: fit-content;
+    min-height: var(--base-size);
+    padding: 0 6px;
+    border-top: var(--border-dashed);
+
+    & .toggle {
+      position: relative;
+      flex: none;
+      width: fit-content;
+      margin-right: auto;
+
+      & span {
+        font-size: 12px !important;
+        font-style: italic;
+
+        &::before {
+          width: 7px !important;
+          height: 7px !important;
+        }
+      }
+    }
+
+    & .field,
+    & .innerfield {
+      border: none;
+      font-size: 12px;
+    }
+
+    & .field {
+      flex: none;
+      width: fit-content;
+      margin: 0 auto;
+
+      &:first-child,
+      &:last-child {
+        margin: 0;
+      }
+
+      & .label {
+        margin-top: 0;
+      }
+
+      & .innerfield {
+        width: 35px;
+        text-align: center;
+        border: none;
+      }
+
+      &:last-child .innerfield {
+        width: 30px;
+      }
+    }
+  }
+}
+
+/* Field Overrides */
+.skills {
+  & .tableheader :nth-child(3),
+  & .tablerow input[type='text'].field:nth-child(3) {
+    flex: none;
+    width: 50px !important;
+    text-align: center;
+    justify-content: center;
+    border-left: var(--border-primary);
+  }
+
+  & .tableheader :nth-child(4),
+  & .tablerow button[type='roll']:nth-child(5) {
+    flex: none;
+    width: 60px !important;
+    border-left: var(--border-primary);
+  }
+}
+
+/* Hide Skills based on Skillset level */
+.skillset input[type='hidden'][name$='level_max'] {
+  &[value='0'] ~ .skill:nth-child(4) ~ .skill,
+  &[value='1'] ~ .skill:nth-child(5) ~ .skill,
+  &[value='2'] ~ .skill:nth-child(6) ~ .skill,
+  &[value='3'] ~ .skill:nth-child(7) ~ .skill,
+  &[value='4'] ~ .skill:nth-child(8) ~ .skill,
+  &[value='5'] ~ .skill:nth-child(9) ~ .skill,
+  &[value='6'] ~ .skill:nth-child(10) ~ .skill,
+  &[value='7'] ~ .skill:nth-child(11) ~ .skill,
+  &[value='8'] ~ .skill:nth-child(12) ~ .skill,
+  &[value='9'] ~ .skill:nth-child(13) ~ .skill {
+    display: none;
+  }
+
+  &[value='0'] ~ .skill:nth-child(4),
+  &[value='1'] ~ .skill:nth-child(5),
+  &[value='2'] ~ .skill:nth-child(6),
+  &[value='3'] ~ .skill:nth-child(7),
+  &[value='4'] ~ .skill:nth-child(8),
+  &[value='5'] ~ .skill:nth-child(9),
+  &[value='6'] ~ .skill:nth-child(10),
+  &[value='7'] ~ .skill:nth-child(11),
+  &[value='8'] ~ .skill:nth-child(12),
+  &[value='9'] ~ .skill:nth-child(13) {
+    border-bottom: var(--border-primary);
+    margin-bottom: var(--base-size);
+  }
+}
+
+/* Header Rows */
+.skills .repitem {
+  border: none !important;
+
+  & .skillset {
+    & input[type='hidden'][name$='header'][value='checked'] {
+      & ~ .skill:first-of-type {
+        background: #ccc !important;
+        /* margin-top: var(--base-size); */
+        margin-bottom: 0;
+        border-bottom: 0;
+
+        & ~ .skill {
+          display: none;
+        }
+
+        & input[type='text']:not([name$='name']),
+        & button[type='roll'] {
+          display: none;
+        }
+
+        & input[type='text'][name$='name'] {
+          display: flex !important;
+
+          &::placeholder {
+            color: #999;
+          }
+        }
+
+        & .drawer > .container:first-child {
+          display: none;
+        }
+
+        & .drawer > .container > :not(:first-child) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  /* Remove first item border */
+  &:first-child .skillset {
+    & .skill {
+      border-top: none;
+      margin-top: 0 !important;
+    }
+  }
+
+  /* Remove last item gap */
+  &:last-child .skillset {
+    & input[type='hidden'][name$='level_max'] {
+      &[value='0'] ~ .skill:nth-child(4),
+      &[value='1'] ~ .skill:nth-child(5),
+      &[value='2'] ~ .skill:nth-child(6),
+      &[value='3'] ~ .skill:nth-child(7),
+      &[value='4'] ~ .skill:nth-child(8),
+      &[value='5'] ~ .skill:nth-child(9),
+      &[value='6'] ~ .skill:nth-child(10),
+      &[value='7'] ~ .skill:nth-child(11),
+      &[value='8'] ~ .skill:nth-child(12),
+      &[value='9'] ~ .skill:nth-child(13) {
+        margin-bottom: 0;
+        border-bottom: var(--border-strong);
+      }
+    }
+  }
+}

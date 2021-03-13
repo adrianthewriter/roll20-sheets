@@ -1,0 +1,221 @@
+.table {
+  /* border: var(--border-strong, 2px solid black); */
+  margin: var(--gap-size) 0;
+
+  /* Toggle Table Content */
+  & input[type='hidden'][value='hidden'] ~ .content {
+    display: none;
+  }
+}
+
+.tableheader {
+  position: relative;
+  display: flex;
+  height: var(--base-size);
+  align-items: flex-end;
+  border-bottom: var(--border-strong);
+
+  &:hover > input[type='checkbox'] ~ span {
+    color: firebrick;
+  }
+
+  & input[type='checkbox'] {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    width: stretch;
+    height: stretch;
+
+    opacity: 0;
+    z-index: 1;
+    -moz-appearance: none;
+    vertical-align: unset;
+
+    &:nth-child(1) {
+      margin: 0;
+    }
+  }
+
+  & > span {
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+    height: var(--base-size);
+    padding: 0 6px;
+    padding-top: 3px;
+    border: none !important;
+
+    font-family: var(--font-label, sans-serif);
+    text-transform: uppercase;
+    text-align: left;
+
+    &:first-child,
+    &:nth-child(2) {
+      font-weight: normal;
+    }
+  }
+
+  & > span:nth-of-type(1n + 3) {
+    font-size: 12px;
+  }
+
+  & .roll {
+    flex: none;
+    width: var(--base-size);
+    padding: 3px 0;
+    justify-content: center;
+
+    &::after {
+      content: 'L';
+      font-family: 'dicefontd6';
+      font-size: 12px;
+    }
+  }
+
+  & .view {
+    flex: none;
+    width: var(--base-size);
+    height: var(--base-size);
+    justify-content: center;
+    align-items: center;
+
+    &::after {
+      content: 'E';
+      font: 12px 'Pictos';
+      font-weight: normal;
+    }
+  }
+}
+
+.tablerow,
+.tablerow > div:only-child {
+  display: flex;
+  flex-flow: row wrap;
+  min-height: var(--base-size);
+  align-items: flex-start;
+
+  & > input[type='text'].field {
+    flex: 1;
+    width: 100%;
+    padding: 0 6px;
+  }
+}
+
+.repitem,
+:not(.repitem) > .tablerow {
+  &:not(:last-child) {
+    border-bottom: var(--border-primary);
+  }
+
+  &:last-child {
+    border-bottom: var(--border-strong);
+  }
+}
+
+/* Roll20 Generated Content */
+/* Repeating Fields */
+.repcontainer.editmode {
+  position: relative;
+}
+
+.repcontainer.editmode .repitem:hover .itemcontrol {
+  background-color: var(--field-hover-color) !important;
+}
+
+.itemcontrol {
+  position: relative;
+  z-index: 100;
+
+  & .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: var(--base-size);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  & .repcontrol_move {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: stretch;
+    height: stretch;
+    opacity: 0;
+    cursor: grab !important;
+
+    &:active {
+      cursor: grabbing !important;
+    }
+  }
+
+  & .repcontrol_del {
+    position: relative;
+    z-index: 100;
+    width: var(--base-size);
+    height: stretch;
+    margin: 1px;
+    border: none;
+    background: firebrick;
+    text-shadow: none;
+  }
+
+  &:not(:hover) .repcontrol_del {
+    display: none;
+  }
+
+  &:hover {
+    outline: 1px dashed goldenrod;
+  }
+}
+
+.repcontrol {
+  overflow: hidden;
+  display: flex;
+  flex-flow: row-reverse nowrap;
+  justify-content: space-between;
+  flex: none;
+  width: stretch;
+  /* margin-top: var(--gap-size); */
+  /* border-top: var(--border-primary); */
+
+  &:not(:hover) .btn::before {
+    opacity: 0.2;
+  }
+
+  & .btn {
+    all: unset;
+    cursor: pointer;
+  }
+
+  & .repcontrol_add,
+  & .repcontrol_edit {
+    padding: var(--gap-size);
+    font-size: 0px;
+    color: transparent;
+
+    &::before {
+      content: '';
+      color: black;
+      font: 14px var(--font-symbol);
+    }
+
+    &:hover::before {
+      color: firebrick;
+    }
+  }
+
+  & .repcontrol_add {
+    &::before {
+      content: '&';
+    }
+  }
+
+  & .repcontrol_edit {
+    &::before {
+      content: 'p';
+    }
+  }
+}

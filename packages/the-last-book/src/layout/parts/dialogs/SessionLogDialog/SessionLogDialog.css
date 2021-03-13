@@ -1,0 +1,150 @@
+input[type='hidden'][name*='dialog_session-log'][value='hidden']
+  ~ .dialog--session-log {
+  display: none;
+}
+
+.dialog--session-log .content {
+  width: 350px;
+
+  /* Table Rows */
+  & .tablerow {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+
+    & > .toggle {
+      position: relative;
+      z-index: 10;
+      width: var(--base-size);
+      height: var(--base-size);
+      padding: 0;
+
+      & input[type='checkbox'].togglebox + span {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      & input[type='checkbox'].togglebox + span::before {
+        all: unset;
+        content: '-';
+        display: block;
+        width: var(--base-size);
+        font: normal 16px var(--font-mono);
+        text-align: center;
+        background: transparent !important;
+      }
+
+      & input[type='checkbox'].togglebox:checked + span::before {
+        content: '+';
+      }
+    }
+
+    & > input[type='text'].field {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+
+    & .drawer {
+      display: flex;
+      flex-flow: column nowrap;
+      flex: none;
+      width: stretch;
+      border-top: var(--border-dashed);
+    }
+
+    & .drawer > textarea.field {
+      border: none;
+      padding: 0 6px;
+      padding-left: calc(var(--base-size) + 6px);
+    }
+
+    & .drawer > .container {
+      display: flex;
+      flex-flow: row nowrap;
+      height: fit-content;
+      min-height: var(--base-size);
+      border-top: var(--border-dashed);
+
+      & .toggle {
+        position: relative;
+        flex: none;
+        width: fit-content;
+        margin-right: var(--gap-size);
+
+        & span {
+          font-size: 12px !important;
+          font-style: italic;
+
+          &::before {
+            width: 7px !important;
+            height: 7px !important;
+          }
+        }
+      }
+
+      & .field,
+      & .innerfield {
+        border: none;
+        font-size: 12px;
+      }
+
+      & .field .label {
+        margin-top: 0;
+      }
+
+      & .field:last-child {
+        flex: none;
+        width: 60px;
+        margin-left: auto;
+        text-align: center;
+        border: none;
+      }
+    }
+  }
+
+  /* Field Overrides */
+  & .tableheader span:nth-child(3),
+  & .tablerow input.field:nth-child(4) {
+    flex: none;
+    width: 95px;
+    text-align: center;
+    justify-content: center;
+    border-left: var(--border-primary);
+  }
+
+  /* Header Rows */
+  & .repitem {
+    & .tablerow {
+      & input[type='hidden'][name$='header'][value='checked'] {
+        & ~ * {
+          background: #eee !important;
+        }
+
+        & ~ input[type='text']:not([name$='session-date']) {
+          display: none;
+        }
+
+        & ~ input[type='text'][name$='session-date'] {
+          display: flex !important;
+        }
+
+        & ~ .drawer > .container .field {
+          display: none;
+        }
+      }
+    }
+
+    &:not(:first-child) .tablerow {
+      & input[type='hidden'][name$='header'][value='checked'] {
+        & ~ *:not(.drawer) {
+          margin-top: var(--gap-size);
+          border-top: var(--border-primary);
+        }
+      }
+    }
+  }
+}

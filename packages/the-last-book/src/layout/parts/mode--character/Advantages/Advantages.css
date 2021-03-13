@@ -1,0 +1,261 @@
+.advantages,
+.disadvantages {
+  display: block;
+  margin-right: var(--base-size);
+
+  & > option {
+    display: none;
+  }
+}
+
+.advantage,
+.disadvantage {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  & > .toggle {
+    position: relative;
+    z-index: 10;
+    width: var(--base-size);
+    height: var(--base-size);
+    padding: 0;
+
+    & input[type='checkbox'].togglebox + span {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    & input[type='checkbox'].togglebox + span::before {
+      all: unset;
+      content: '-';
+      display: block;
+      width: var(--base-size);
+      font: normal 16px var(--font-mono);
+      text-align: center;
+      background: transparent !important;
+    }
+
+    & input[type='checkbox'].togglebox:checked + span::before {
+      content: '+';
+    }
+  }
+
+  & > input[type='text'].field {
+    flex: 1;
+    width: 100%;
+    border: none;
+  }
+
+  & .drawer {
+    display: flex;
+    flex-flow: column nowrap;
+    flex: none;
+    width: stretch;
+    border-top: var(--border-dashed);
+  }
+
+  & .drawer > textarea.field {
+    border: none;
+    padding: 0 6px;
+    padding-left: calc(var(--base-size) + 6px);
+  }
+
+  & .drawer > .container {
+    display: flex;
+    flex-flow: row nowrap;
+    height: fit-content;
+    min-height: var(--base-size);
+    border-top: var(--border-dashed);
+
+    & .toggle {
+      position: relative;
+      flex: none;
+      width: fit-content;
+      margin-right: var(--gap-size);
+
+      & span {
+        font-size: 12px !important;
+        font-style: italic;
+
+        &::before {
+          width: 7px !important;
+          height: 7px !important;
+        }
+      }
+    }
+
+    & .field,
+    & .innerfield {
+      border: none;
+      font-size: 12px;
+    }
+
+    & .field .label {
+      margin-top: 0;
+    }
+
+    & .field:last-child {
+      flex: none;
+      width: 60px;
+      margin-left: auto;
+      text-align: center;
+      border: none;
+    }
+  }
+}
+
+.table--advantages--combat .advantage > {
+  & input[type='hidden'][name$='type'] {
+    &:not([value='']):not([value='All Weapons' i]) {
+      & ~ input[type='text'][name$='type'].field {
+        display: none;
+      }
+    }
+
+    &[value=''],
+    &[value='All Weapons' i] {
+      & ~ input[type='text'][name$='name'].field {
+        display: none;
+      }
+    }
+  }
+
+  & .drawer .container .field:nth-child(2) {
+    flex: none;
+    width: 130px;
+  }
+}
+
+.table--advantages--standard .advantage > {
+  &
+    input[type='hidden'][name$='show-value']:not([value='checked'])
+    ~ input[type='text'][name$='value'].field {
+    display: none;
+  }
+
+  & > input[type='text'][name$='value'].field {
+    flex: none;
+    width: 25px;
+    text-align: center;
+  }
+}
+
+.table--disadvantages {
+  & .tableheader > span:nth-child(4),
+  & .disadvantage > input[type='text'].field:nth-child(4) {
+    flex: none;
+    width: 95px;
+    text-align: center;
+    justify-content: center;
+    border-left: var(--border-primary);
+  }
+
+  & .disadvantage .drawer .container {
+    & input[type='hidden'][name$='type'] {
+      & ~ .field {
+        width: fit-content;
+      }
+
+      & ~ .field input.innerfield {
+        width: 30px;
+        display: none;
+      }
+
+      & ~ .field .sep {
+        display: none;
+      }
+
+      &[value='Affliction'] ~ .field span.label::after,
+      &[value='Ailment'] ~ .field span.label::after,
+      &[value='Obstacle'] ~ .field span.label::after {
+        margin-left: 3px;
+      }
+
+      &[value='Affliction'] ~ .field span.label::after {
+        content: 'when triggered:';
+        text-transform: none;
+      }
+
+      &[value='Ailment'] ~ .field span.label::after {
+        content: 'Awarded:';
+      }
+
+      &[value='Obstacle'] ~ .field span.label::after {
+        content: 'Accrued:';
+      }
+
+      &[value='Affliction'] ~ .field input[name$='cap_max'].innerfield,
+      &[value='Ailment'] ~ .field input[name$='cap'].innerfield,
+      &[value='Obstacle'] ~ .field input[name$='cap_max'].innerfield {
+        display: flex;
+      }
+
+      &:not([value='Affliction']):not([value='Ailment']):not([value='Obstacle'])
+        ~ .field {
+        display: none;
+      }
+
+      &:not([value='Obstacle']) ~ .toggle {
+        display: none;
+      }
+
+      &[value='Obstacle'] + {
+        & input[type='hidden'][name$='overcome'][value='checked'] {
+          & ~ .field span.label::after {
+            content: 'Awarded:';
+          }
+
+          & ~ .field input[name$='cap_max'].innerfield {
+            display: none;
+          }
+
+          & ~ .field input[name$='cap'].innerfield {
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Header Rows */
+.repitem {
+  & .advantage,
+  & .disadvantage {
+    & input[type='hidden'][name$='header'][value='checked'] {
+      & ~ * {
+        background: #ccc !important;
+      }
+
+      & ~ input[type='text']:not([name$='name']) {
+        display: none;
+      }
+
+      & ~ input[type='text'][name$='name'] {
+        display: flex !important;
+
+        &::placeholder {
+          color: #999;
+        }
+      }
+
+      & ~ .drawer > .container > :not(:first-child) {
+        display: none;
+      }
+    }
+  }
+
+  &:not(:first-child) .advantage,
+  &:not(:first-child) .disadvantage {
+    & input[type='hidden'][name$='header'][value='checked'] {
+      & ~ *:not(.drawer) {
+        margin-top: var(--base-size);
+        border-top: var(--border-primary);
+      }
+    }
+  }
+}

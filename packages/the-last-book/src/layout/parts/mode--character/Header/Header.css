@@ -1,0 +1,56 @@
+.header {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+
+  margin-bottom: var(--base-size);
+  padding-bottom: var(--base-size);
+  border-bottom: var(--border-strong);
+
+  & > div:nth-child(1) {
+    width: fit-content;
+    margin-right: auto;
+  }
+
+  & > div:nth-child(2) {
+    width: 30%;
+    margin-right: var(--base-size);
+  }
+
+  & > div:nth-child(3) {
+    width: 15%;
+  }
+
+  & .container {
+    all: unset;
+    display: flex;
+    flex-flow: row nowrap;
+
+    &:nth-child(2) :first-child {
+      margin-right: var(--gap-size);
+    }
+
+    &:nth-child(3) {
+      margin-top: var(--base-size);
+
+      & .field input[type='text'] {
+        text-align: center;
+      }
+
+      & .toggle {
+        border-bottom: 1px solid black;
+      }
+
+      & input[name*='dialog_session-log'][type='checkbox'].togglebox + span {
+        &::before {
+          all: unset;
+          content: 'W';
+          font: normal 14px 'Pictos';
+          padding-top: 1px;
+        }
+      }
+    }
+  }
+}

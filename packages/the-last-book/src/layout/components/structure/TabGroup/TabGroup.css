@@ -1,0 +1,105 @@
+.tabgroup {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.tabs {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: var(--gap-size);
+  border-bottom: var(--border-primary);
+
+  & div.tab,
+  & button[type='action'].tab,
+  & .tabmenu > span {
+    all: unset;
+    flex: none;
+    width: fit-content;
+    margin-bottom: -1px;
+    padding: 0 var(--gap-size) 3px;
+
+    color: #ccc;
+    font: 18px var(--font-heading);
+    background: transparent;
+
+    --notch-size: 9px;
+    padding-right: var(--notch-size);
+    border-top-right-radius: calc(var(--notch-size) + 2px);
+    clip-path: polygon(
+      0% 0%,
+      0% 0%,
+      calc(100% - var(--notch-size)) 0%,
+      100% var(--notch-size),
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0% 100%
+    );
+
+    &:not(:last-child) {
+      margin-right: var(--gap-size);
+    }
+
+    & span {
+      all: unset;
+      display: block;
+      width: stretch;
+      height: var(--base-size);
+      color: inherit;
+      font: inherit;
+    }
+
+    & > input[type='checkbox'].togglebox + span::before {
+      content: none;
+    }
+  }
+
+  & div.tab:first-child {
+    background: black;
+    color: white;
+    margin-right: calc(var(--gap-size) * 2);
+  }
+}
+
+.tabmenu {
+  position: relative;
+  width: fit-content;
+
+  & > span {
+    width: fit-content !important;
+  }
+
+  & > div {
+    position: absolute;
+    z-index: 100;
+    display: none;
+    flex-flow: column nowrap;
+
+    width: fit-content;
+    padding: var(--gap-size);
+    background: white;
+    border: var(--border-primary);
+
+    & button[type='action'].tab {
+      order: 0 !important;
+      width: stretch;
+      margin: 0 !important;
+      clip-path: unset;
+      border-radius: 0;
+      white-space: nowrap;
+    }
+  }
+
+  &:hover,
+  &:focus-within {
+    & > span {
+      color: firebrick;
+    }
+
+    & > div {
+      display: flex;
+    }
+  }
+}

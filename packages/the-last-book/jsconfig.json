@@ -5,15 +5,15 @@
     "module": "es2015",
     "baseUrl": "src",
     "paths": {
-      "@assets/*": ["assets/*", "assets"],
-      "@layout/*": ["layout/*", "layout"],
-      "@scripts/*": ["scripts/*", "scripts"],
-      "@templates/*": ["templates/*", "templates"],
-      "@components/*": ["layout/components/*", "layout/components"]
+      "@assets/*": ["/assets/*"],
+      "@components/*": ["/layout/components/*"],
+      "@layout/*": ["/layout/*"],
+      "@scripts/*": ["/scripts/*"],
+      "@templates/*": ["/templates/*"]
     },
     "moduleResolution": "node",
     "resolveJsonModule": true
   },
-  "include": ["lib/**/*", "src/**/*"],
-  "typeAcquisition": { "include": ["dotenv"] }
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/**/*"]
 }

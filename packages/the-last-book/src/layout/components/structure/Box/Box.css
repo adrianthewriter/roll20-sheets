@@ -1,0 +1,93 @@
+.box {
+  display: grid;
+  grid-template-rows: auto auto;
+  align-self: flex-start;
+  width: stretch;
+
+  & h2.header {
+    all: unset;
+    grid-row: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    width: fit-content;
+    padding: 0 var(--gap-size) 3px;
+    margin-bottom: var(--gap-size);
+
+    color: white;
+    font: 18px var(--font-heading);
+    background: black;
+
+    --notch-size: 9px;
+    padding-right: var(--gap-size);
+    border-top-right-radius: calc(var(--notch-size) + 2px);
+    clip-path: polygon(
+      0% 0%,
+      0% 0%,
+      calc(100% - var(--notch-size)) 0%,
+      100% var(--notch-size),
+      100% 100%,
+      100% 100%,
+      100% 100%,
+      0% 100%
+    );
+
+    & > span.label {
+      all: unset;
+      display: block;
+      width: stretch;
+      height: var(--base-size);
+      color: inherit;
+      font: inherit;
+    }
+
+    & > .toggle {
+      position: relative;
+      width: var(--base-size);
+      height: var(--base-size);
+      margin-right: calc(var(--gap-size) * -1);
+      margin-bottom: calc(var(--gap-size) * -1);
+      padding: 0;
+
+      & input[type='checkbox'] {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+      }
+
+      & input[type='checkbox'] + span {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      & input[type='checkbox'] + span::before {
+        all: unset;
+        content: '-';
+        display: block;
+        width: var(--base-size);
+        font: normal 16px var(--font-mono);
+        text-align: center;
+      }
+
+      & input[type='checkbox']:checked + span::before {
+        content: '+';
+      }
+    }
+  }
+
+  /* Box Content */
+  & .content {
+    flex-flow: column nowrap;
+  }
+
+  /* Toggle Box Content */
+  & .toggle[value='hidden'] ~ .content {
+    display: none;
+  }
+}

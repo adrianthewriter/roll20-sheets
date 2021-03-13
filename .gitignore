@@ -8,8 +8,11 @@
 /coverage
 
 # production
-/build
-/packages/**/build
+# /build
+# /packages/**/build
+
+# hide
+/packages_old
 
 # misc
 /.vscode

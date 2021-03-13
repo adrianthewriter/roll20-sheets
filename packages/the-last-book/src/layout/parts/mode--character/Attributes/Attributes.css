@@ -1,0 +1,106 @@
+.box--attributes .content {
+}
+
+.attribute {
+  & h3 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  & .container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: fit-content;
+    border: var(--border-strong);
+
+    & .field,
+    & div.field,
+    & label.field {
+      display: flex;
+      flex-flow: column-reverse nowrap;
+      flex: none;
+      width: 50%;
+      border: 0;
+
+      &:first-child {
+        border-right: var(--border-primary);
+      }
+    }
+
+    & .innerfield,
+    & span.innerfield,
+    & input[type='text'].innerfield {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      font-size: 20px;
+
+      width: 100%;
+      height: calc(var(--base-size) * 1.75);
+      border-bottom: var(--border-dashed);
+    }
+
+    & span.innerfield::after {
+      content: '%';
+    }
+
+    & .label {
+      height: var(--base-size) !important;
+      margin: 0 !important;
+
+      &:not(button)::after {
+        content: none !important;
+      }
+    }
+  }
+}
+
+.box--derived .content {
+  & h3 {
+    font-size: 14px;
+    font-weight: bold;
+  }
+}
+
+.stat {
+  margin-bottom: var(--gap-size);
+
+  & .field {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+
+    height: var(--base-size);
+    border: 0;
+  }
+
+  & .label::after {
+    content: none !important;
+  }
+
+  & .innerfield {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-content: center;
+
+    flex: none;
+    width: 45px;
+    height: var(--base-size);
+    padding: 0 var(--gap-size);
+    padding-top: 1px;
+    line-height: 1;
+    border: var(--border-strong);
+
+    &::after {
+      content: '%';
+    }
+  }
+}
+
+.stat:last-child .innerfield::after {
+  content: none;
+}

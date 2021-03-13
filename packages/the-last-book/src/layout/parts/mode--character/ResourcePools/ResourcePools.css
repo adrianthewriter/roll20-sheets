@@ -1,0 +1,234 @@
+.resources {
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  flex: none;
+  width: stretch;
+  margin-bottom: var(--base-size);
+
+  --resource-width: calc((100% - var(--gap-size) * 3) / 4);
+
+  & h3 {
+    font: bold 14px / var(--base-size) var(--font-body);
+    font-weight: bold;
+    margin: 0;
+
+    &::after {
+      content: ':';
+    }
+  }
+}
+
+.resource {
+  flex: none;
+  width: var(--resource-width);
+
+  & .container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: fit-content;
+    border: var(--border-strong);
+  }
+
+  & .field,
+  & div.field,
+  & label.field {
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    flex: 1;
+    border: 0;
+    border-right: var(--border-primary);
+    font: bold 14px / var(--base-size) var(--font-body);
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+
+  & .innerfield,
+  & span.innerfield,
+  & input[type='text'].innerfield {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 20px;
+
+    width: 100%;
+    height: calc(var(--base-size) * 1.75);
+    border-bottom: var(--border-dashed);
+  }
+
+  & .label {
+    height: var(--base-size) !important;
+    margin: 0 !important;
+
+    &::after {
+      content: none !important;
+    }
+  }
+}
+
+.resource--health {
+  position: absolute;
+  top: 0;
+  flex: none;
+  width: calc(100% - var(--resource-width) - var(--gap-size));
+
+  & .field {
+    /* flex: none;
+    width: 50px; */
+  }
+
+  & .field:last-child {
+    margin-left: 2px;
+    border-left: var(--border-primary);
+  }
+}
+
+/* .resource--vigor {
+  left: calc(var(--resource-width) + var(--gap-size));
+}
+.resource--health {
+  & .container .field:not(:last-child) {
+    display: none;
+  }
+
+  & input[name$='wound-level'][value='0'] ~ .container .field:nth-child(1),
+  & input[name$='wound-level'][value='1'] ~ .container .field:nth-child(2),
+  & input[name$='wound-level'][value='2'] ~ .container .field:nth-child(3),
+  & input[name$='wound-level'][value='3'] ~ .container .field:nth-child(4),
+  & input[name$='wound-level'][value='4'] ~ .container .field:nth-child(5),
+  & input[name$='wound-level'][value='5'] ~ .container .field:nth-child(6),
+  & input[name$='wound-level'][value='6'] ~ .container .field:nth-child(7) {
+    display: flex;
+  }
+} */
+
+.table--additional-resources {
+  width: stretch;
+  height: fit-content;
+  margin: 0;
+
+  & .resource h3 {
+    display: flex;
+    flex-flow: row-reverse nowrap;
+    width: 100%;
+
+    & span.field {
+      flex-flow: row nowrap;
+      align-items: flex-start;
+
+      &::after {
+        content: ':';
+      }
+    }
+
+    & input[type='text'].field {
+      width: 100%;
+      margin-right: calc(var(--base-size) * -1);
+      border: 0;
+      background: var(--field-hover-color);
+    }
+
+    & .toggle {
+      position: relative;
+      z-index: 10;
+      width: var(--base-size);
+      height: var(--base-size);
+      padding: 0;
+
+      opacity: 0;
+
+      & input[type='checkbox'] {
+        position: absolute;
+        z-index: 10;
+        width: 100%;
+        height: 100%;
+      }
+
+      & input[type='checkbox'] + span {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      & input[type='checkbox'] + span::before {
+        all: unset;
+        content: ')';
+        display: block;
+        width: var(--base-size);
+        font: normal 14px var(--font-symbol);
+        text-align: center;
+        background: transparent !important;
+      }
+
+      & input[type='checkbox']:checked + span::before {
+        content: '(';
+      }
+    }
+
+    &:hover .toggle,
+    &:focus-within .toggle {
+      opacity: 1;
+    }
+
+    &::after {
+      content: none;
+    }
+
+    & input[type='hidden'][name*='resource-name_max'][value='locked'] ~ {
+      & input[type='text'].field {
+        display: none;
+      }
+      & span.field {
+        display: flex;
+      }
+    }
+
+    & input[type='hidden'][name*='resource-name_max']:not([value='locked']) ~ {
+      & input[type='text'].field {
+        display: flex;
+      }
+      & span.field {
+        display: none;
+      }
+    }
+  }
+
+  /* Roll20 Table Controls */
+  & .repcontainer {
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 82px;
+
+    & .repitem {
+      width: var(--resource-width);
+      margin-left: var(--gap-size);
+      border: none;
+
+      & .resource {
+        width: 100%;
+      }
+    }
+
+    & .repitem:first-child {
+      margin-left: calc(var(--resource-width) * 3 + var(--gap-size) * 3);
+    }
+
+    & .repitem:nth-child(4n + 2) {
+      margin-left: 0;
+    }
+  }
+
+  & .repcontrol {
+    margin-top: var(--gap-size);
+    border-top: var(--border-primary);
+  }
+}

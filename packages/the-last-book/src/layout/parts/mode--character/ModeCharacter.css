@@ -1,0 +1,187 @@
+.mode.mode--character {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: flex-start;
+
+  & .header {
+    flex: none;
+    width: stretch;
+  }
+
+  & .sec--side {
+    flex: 2;
+    height: stretch;
+    margin-right: var(--base-size);
+    padding-right: var(--base-size);
+    border-right: 2px solid black;
+  }
+
+  & .sec--main {
+    flex: 8;
+  }
+
+  & .tabgroup--character {
+    flex: none;
+    width: stretch;
+
+    & input[type='hidden'][name$='advanced'][value='0'] ~,
+    & input[type='hidden'][name$='advanced'][value='1'] ~,
+    & input[type='hidden'][name$='advanced'][value='2'] ~ {
+      & .tabs button {
+        display: flex;
+      }
+
+      & .tabs .tabmenu {
+        display: none;
+      }
+    }
+
+    & input[type='hidden'][name$='advanced'] {
+      &:not([value='0']):not([value='1']):not([value='2']) ~ {
+        & .tabs > button[name*='warrior'],
+        & .tabs > button[name*='conqueror'],
+        & .tabs > button[name*='alchemist'],
+        & .tabs > button[name*='templar'],
+        & .tabs > button[name*='lotus-eater'],
+        & .tabs > button[name*='shaman'] {
+          display: none;
+        }
+      }
+    }
+
+    & input[type='hidden'][name*='character-tabs'][value='settings'] ~ {
+      & input[type='hidden'][name$='advanced'] {
+        &:not([value='0']):not([value='1']) ~ {
+          & .tabs > button[name*='warrior'],
+          & .tabs > button[name*='conqueror'],
+          & .tabs > button[name*='alchemist'],
+          & .tabs > button[name*='templar'],
+          & .tabs > button[name*='lotus-eater'],
+          & .tabs > button[name*='shaman'] {
+            display: none;
+          }
+
+          & .tabs .tabmenu {
+            display: block;
+          }
+        }
+      }
+    }
+
+    & input[type='hidden'][name*='character-tabs'] {
+      &[value='details'] ~ .tabs button[name*='details'],
+      &[value='warrior'] ~ .tabs button[name*='warrior'],
+      &[value='conqueror'] ~ .tabs button[name*='conqueror'],
+      &[value='alchemist'] ~ .tabs button[name*='alchemist'],
+      &[value='templar'] ~ .tabs button[name*='templar'],
+      &[value='lotus-eater'] ~ .tabs button[name*='lotus-eater'],
+      &[value='shaman'] ~ .tabs button[name*='shaman'],
+      &[value='equipment'] ~ .tabs button[name*='equipment'],
+      &[value='notes'] ~ .tabs button[name*='notes'] {
+        display: none !important;
+      }
+
+      &[value='warrior'] ~ .tabs .tabmenu button[name*='warrior'],
+      &[value='conqueror'] ~ .tabs .tabmenu button[name*='conqueror'],
+      &[value='alchemist'] ~ .tabs .tabmenu button[name*='alchemist'],
+      &[value='templar'] ~ .tabs .tabmenu button[name*='templar'],
+      &[value='lotus-eater'] ~ .tabs .tabmenu button[name*='lotus-eater'],
+      &[value='shaman'] ~ .tabs .tabmenu button[name*='shaman'] {
+        display: none !important;
+      }
+
+      & ~ .tabs button[name*='equipment'].tab,
+      & ~ .tabs button[name*='notes'].tab {
+        order: 99;
+      }
+
+      & ~ .tabs .tabmenu {
+        order: 1 !important;
+      }
+
+      &[value='settings'] ~ .tabs button[name*='settings'].tab {
+        color: black;
+      }
+
+      & ~ .tabs button[name*='settings'].tab {
+        all: unset;
+        order: 999 !important;
+        margin-left: auto;
+        background: transparent;
+        color: #ccc;
+
+        & span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 0px;
+          color: inherit;
+        }
+
+        & span::before {
+          content: 'y';
+          color: inherit;
+          font: 16px var(--font-symbol);
+        }
+      }
+
+      & ~ .sec {
+        display: none;
+      }
+
+      &[value='details'] ~ .sec[class*='details'],
+      &[value='warrior'] ~ .sec[class*='warrior'],
+      &[value='conqueror'] ~ .sec[class*='conqueror'],
+      &[value='alchemist'] ~ .sec[class*='alchemist'],
+      &[value='templar'] ~ .sec[class*='templar'],
+      &[value='lotus-eater'] ~ .sec[class*='lotus-eater'],
+      &[value='shaman'] ~ .sec[class*='shaman'],
+      &[value='equipment'] ~ .sec[class*='equipment'],
+      &[value='notes'] ~ .sec[class*='notes'],
+      &[value='settings'] ~ .sec[class*='settings'] {
+        display: flex;
+      }
+    }
+  }
+}
+
+input[type='hidden'][value='hidden'][name*='show_'] {
+  &[name$='conqueror']
+    ~ .mode--character
+    .tabs
+    button[type='action'][name*='conqueror'],
+  &[name$='alchemist']
+    ~ .mode--character
+    .tabs
+    button[type='action'][name*='alchemist'],
+  &[name$='templar']
+    ~ .mode--character
+    .tabs
+    button[type='action'][name*='templar'],
+  &[name$='lotus-eater']
+    ~ .mode--character
+    .tabs
+    button[type='action'][name*='lotus-eater'],
+  &[name$='shaman']
+    ~ .mode--character
+    .tabs
+    button[type='action'][name*='shaman'] {
+    display: none !important;
+  }
+}
+
+/* Tab Sections: Details */
+.sec.sec--details {
+  display: flex;
+  flex-flow: row wrap;
+
+  & > :not(:last-child) {
+    flex: 4;
+  }
+
+  & > :last-child {
+    flex: 3;
+  }
+}
